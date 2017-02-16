@@ -142,7 +142,7 @@ if(!isset($_POST["polyline"])) {
             for(var key in drawControls) {
                 map.addControl(drawControls[key]);
             }
-            map.setCenter(new OpenLayers.LonLat(37.09,55.66).transform(fromProjection,toProjection), 14); // 0=relative zoom level 
+            map.setCenter(new OpenLayers.LonLat(37.09,55.66).transform(fromProjection,toProjection), 7); // 0=relative zoom level 
         
         
         
@@ -214,8 +214,8 @@ if(!isset($_POST["polyline"])) {
 		
 		<input type="hidden" name="timezone_offset" id="timezone_offset" value="+03:00">
 		<input type="hidden" name="incident_id" value="">
-		<input type="hidden" name="creationtime" value="<?php echo date("c"); ?>">
-		<input type="hidden" name="updatetime" value="<?php echo date("c"); ?>">
+		<input type="hidden" name="creationtime" value="<?php echo date("Y-m-d\TH:i:s"); ?>">
+		<input type="hidden" name="updatetime" value="<?php echo date("Y-m-d\TH:i:s"); ?>">
 		<input type="hidden" name="direction" value="ONE_DIRECTION">
 		
 		
@@ -281,6 +281,8 @@ $( function() {
 	$data["active"] = 0;
 	$data['starttime'] = $data['starttime'] . $data['timezone_offset'];
 	$data['endtime'] = $data['endtime'] . $data['timezone_offset'];
+	$data['creationtime'] = $data['creationtime'] . $data['timezone_offset'];
+	$data['updatetime'] = $data['updatetime'] . $data['timezone_offset'];
 	unset($data['timezone_offset']);
 	
 	if($last_id = mysql_write_row("feed", $data)) header("Location: /#success-". $last_id);
