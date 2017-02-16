@@ -1,14 +1,10 @@
-<?php 
-error_reporting(E_ALL);
-$username = "flusspferd_feedw";
-$password = "34831";
-$hostname = "localhost";
-$dbname = "flusspferd_feedw";
-
+<?php 	
+include("config.php");	
 $mysqli = mysqli_connect($hostname, $username, $password, $dbname);
 mysqli_set_charset($mysqli, "utf8");
 
-include("db-function.php");	
+include("db-function.php");
+
 $last_id = mysql_getcell("SELECT MAX(id) FROM feed");
 if(!isset($_POST["polyline"])) { 
 ?>
