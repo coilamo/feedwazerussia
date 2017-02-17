@@ -33,6 +33,7 @@ if(!isset($_POST["polyline"])) {
     <script src="http://dev.openlayers.org/OpenLayers.js"></script>
     <script  src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.2.4/jquery.datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script type="text/javascript">
 	
 		
@@ -59,6 +60,7 @@ if(!isset($_POST["polyline"])) {
         	displayProjection:new OpenLayers.Projection("EPSG:4326"),
         	zoom:5}
            )
+
         var WazeLiveMapLayer = new OpenLayers.Layer.OSM(
           "Waze Livemap",
           ['http://tilesworld.waze.com/tiles/${z}/${x}/${y}.png'], 
@@ -81,7 +83,8 @@ if(!isset($_POST["polyline"])) {
                 'featureselected': function(feature) {
                     var xy0 = this.selectedFeatures[0].geometry.components[0].transform(toProjection,fromProjection);
                     var xy1 = this.selectedFeatures[0].geometry.components[1].transform(toProjection,fromProjection);
-					
+					$.cookie("map_lat", xy0.y.toFixed(2), { expires : 1000 });
+					$.cookie("map_lon", xy0.x.toFixed(2), { expires : 1000 });
 					$('input#start').val(xy0.y.toFixed(6)+' '+xy0.x.toFixed(6));
 					$('input#end').val(xy1.y.toFixed(6)+' '+xy1.x.toFixed(6));
 					$('input[name="polyline"]').val(xy0.y.toFixed(6) + ' ' + xy0.x.toFixed(6) + ' ' + xy1.y.toFixed(6) + ' ' + xy1.x.toFixed(6));
@@ -98,7 +101,7 @@ if(!isset($_POST["polyline"])) {
 
             map.addLayers([WazeLiveMapLayer, vectors]);
             map.addControl(new OpenLayers.Control.LayerSwitcher());
-            
+            console.log(WazeLiveMapLayer.getExtent);
             drawControls = {
                 point: new OpenLayers.Control.DrawFeature(
                     vectors, OpenLayers.Handler.Point
@@ -140,10 +143,19 @@ if(!isset($_POST["polyline"])) {
                 )
             };
             
+			map.events.on({
+				"moveend":function(){
+					$.cookie("fwr_lon", map.getCenter().transform(toProjection,fromProjection).lon);
+					$.cookie("fwr_lat", map.getCenter().transform(toProjection,fromProjection).lat);
+				}
+			});
+            
             for(var key in drawControls) {
                 map.addControl(drawControls[key]);
             }
-            map.setCenter(new OpenLayers.LonLat(37.09,55.66).transform(fromProjection,toProjection), 7); // 0=relative zoom level 
+            var map_lon = (typeof $.cookie("fwr_lon") !== 'undefined') ?  $.cookie("fwr_lon") : 37.61;
+            var map_lat = (typeof $.cookie("fwr_lat") !== 'undefined') ?  $.cookie("fwr_lat") : 55.76;
+            map.setCenter(new OpenLayers.LonLat(map_lon, map_lat).transform(fromProjection,toProjection), 7); // 0=relative zoom level 
         
         
         
