@@ -147,6 +147,8 @@ if(!isset($_POST["polyline"])) {
 				"moveend":function(){
 					$.cookie("fwr_lon", map.getCenter().transform(toProjection,fromProjection).lon);
 					$.cookie("fwr_lat", map.getCenter().transform(toProjection,fromProjection).lat);
+					$.cookie("fwr_zoom", map.getZoom());
+
 				}
 			});
             
@@ -155,7 +157,8 @@ if(!isset($_POST["polyline"])) {
             }
             var map_lon = (typeof $.cookie("fwr_lon") !== 'undefined') ?  $.cookie("fwr_lon") : 37.61;
             var map_lat = (typeof $.cookie("fwr_lat") !== 'undefined') ?  $.cookie("fwr_lat") : 55.76;
-            map.setCenter(new OpenLayers.LonLat(map_lon, map_lat).transform(fromProjection,toProjection), 7); // 0=relative zoom level 
+            var map_zoom = (typeof $.cookie("fwr_zoom") !== 'undefined') ?  $.cookie("fwr_zoom") : 7;
+            map.setCenter(new OpenLayers.LonLat(map_lon, map_lat).transform(fromProjection,toProjection), map_zoom); // 0=relative zoom level 
         
         
         
