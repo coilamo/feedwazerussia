@@ -29,11 +29,11 @@ ul#controlToggle {
 	width: 50px;
 }
 
-input[type="radio"]{
+#controlToggle input[type="radio"]{
 	display:none;
 }
 
-label {
+#controlToggle label {
 	display: block;
 	width: 24px;
 	height:24px;
@@ -42,7 +42,7 @@ label {
 	border: 1px solid white;
 }
 
-input:checked + label {
+#controlToggle input:checked + label {
 	border: 1px solid red;
 }
 

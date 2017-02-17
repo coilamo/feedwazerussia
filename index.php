@@ -4,6 +4,7 @@ $mysqli = mysqli_connect($hostname, $username, $password, $dbname);
 mysqli_set_charset($mysqli, "utf8");
 
 include("db-function.php");
+include("functions.php");
 
 $last_id = mysql_getcell("SELECT MAX(id) FROM feed");
 if(!isset($_POST["polyline"])) { 
@@ -14,8 +15,8 @@ if(!isset($_POST["polyline"])) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>OpenLayers Image Layer Example</title>
-    <link rel="stylesheet" href="style.css?v=001" type="text/css">
+    <title>Feed Waze Russia</title>
+    <link rel="stylesheet" href="style.css?v=007" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css">
 
@@ -222,7 +223,7 @@ if(!isset($_POST["polyline"])) {
 		<p><input type="text" id="start" readonly placeholder="Координаты точки старта"> &mdash; <input type="text" id="end" readonly>
 		<input type="hidden" name="polyline" value="2">
 		</p>
-		<p><select class="type" name="type">
+		<p><select class="type" name="type" required>
 				<option value="">Выберите тип события</option>
 				<option value="ACCIDENT">ACCIDENT</option>
 				<option value="CONSTRUCTION">CONSTRUCTION</option>
@@ -233,10 +234,10 @@ if(!isset($_POST["polyline"])) {
 			<select style="display:none" class="subtype" name="subtype">
 			</select>
 		</p>
-		<p><input type="text" id="starttime" name="starttime" placeholder="Дата начала"> &mdash; <input type="text" id="endtime" name="endtime" placeholder="Дата окончания"></p>
-		<p><textarea name="description" placeholder="Описание"></textarea></p>
-		<p><input class="w330" type="text" name="street" placeholder="Улица" /></p>
-		<p><input class="w330" type="text" name="author" placeholder="Ваш ник" /></p>
+		<p><input type="text" id="starttime" name="starttime" placeholder="Дата начала" required> &mdash; <input type="text" id="endtime" name="endtime" placeholder="Дата окончания" required></p>
+		<p><textarea name="description" placeholder="Описание" required></textarea></p>
+		<p><input class="w330" type="text" name="street" placeholder="Улица" required/><input id="nostreet" type="checkbox"> Без названия</p>
+		<p><input class="w330" type="text" name="author" placeholder="Ваш ник" required/></p>
 		<p><input class="w330" type="submit" value="Отправить" /></p>
     </form>
     <script type="text/javascript">
@@ -261,7 +262,16 @@ $( function() {
 		$('#msg').html("Репорт id "+window.location.hash.substr(1).split('-')[1]+" отправлен на модерацию");
 		window.location.hash = '';
 	}
-		
+	
+	$('#nostreet').change(function() {
+		if(this.checked) {
+			$('input[name="street"]').val("No street");
+			$('input[name="street"]').prop('disabled', true);
+		} else {
+			$('input[name="street"]').val("");
+			$('input[name="street"]').prop('disabled', false);
+		};
+	});
 });
 
 $( function() {
@@ -281,12 +291,38 @@ $( function() {
 	$data['endtime'] = $data['endtime'] . $data['timezone_offset'];
 	$data['creationtime'] = gmdate("Y-m-d\TH:i:s", time() + 3600*(str_replace('0','', $data['timezone_offset'])+date("I"))). $data['timezone_offset'];
 	$data['updatetime'] = gmdate("Y-m-d\TH:i:s", time() + 3600*(str_replace('0','', $data['timezone_offset'])+date("I"))). $data['timezone_offset'];
+	
+	$error_text = "";
+	
+	if ((strlen(trim($data['author'])) < 1) || (strlen(trim($data['author'])) > 32)) {
+		$error_text .= "Поле Имя пользователя должно содержать от 1 до 32 символов";
+	}
+	if ((strlen(trim($data['street'])) < 1) || (strlen(trim($data['street'])) > 100)) {
+		$error_text .= "Поле Улица должно содержать от 1 до 100 символов";
+	}
+	if ((strlen(trim($data['starttime'])) < 19) || (strlen(trim($data['starttime'])) > 25)) {
+		$error_text .= "Проверьте Дату начала";
+	}
+	if ((strlen(trim($data['endtime'])) < 19) || (strlen(trim($data['endtime'])) > 25)) {
+		$error_text .= "Проверьте Дату окончания";
+	}
+	
+	if (strlen(trim($data['timezone_offset'])) < 1) {
+		$error_text .= "Ошибка данных";
+	}
+	if ((strlen(trim($data['description'])) < 3) || (strlen(trim($data['description'])) > 100)) {
+		$error_text .= "Поле Описание должно содержать от 3 до 100 символов";
+	}
+	
+	if(!empty($error_text)) {
+			echo "Внимание, ошибки!<br/>" . $error_text . "<br/><a href=\"javascript:window.history.back();\">Вернитесь назад</a> и исправьте ошибки";
+			exit();
+	}
 
 	unset($data['timezone_offset']);
-	
+	array_walk_recursive($data, "filter");
 	if($last_id = mysql_write_row("feed", $data)) header("Location: /#success-". $last_id);
-	
-		
+			
 }
 ?>
 
