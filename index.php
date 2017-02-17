@@ -70,7 +70,9 @@ if(!isset($_POST["polyline"])) {
         );
         //var WazeLiveMapLayer = new OpenLayers.Layer.OSM.Mapnik("Base Layer",{displayOutsideMaxExtent:true,wrapDateLine:true});
         map.addLayer(WazeLiveMapLayer);
-       
+		
+		
+		var markers = new OpenLayers.Layer.Markers( "Markers" );
         
             // allow testing of specific renderers via "?renderer=Canvas", etc
             var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
@@ -83,6 +85,12 @@ if(!isset($_POST["polyline"])) {
                 'featureselected': function(feature) {
                     var xy0 = this.selectedFeatures[0].geometry.components[0].transform(toProjection,fromProjection);
                     var xy1 = this.selectedFeatures[0].geometry.components[1].transform(toProjection,fromProjection);
+                    var point1 = new OpenLayers.Geometry.Point(xy0.x, xy0.y).transform(fromProjection,toProjection);
+					var point2 = new OpenLayers.Geometry.Point(xy1.x, xy1.y).transform(fromProjection,toProjection);
+					var line = new OpenLayers.Geometry.LineString([point1, point2]);       
+					var distance = line.getGeodesicLength(new OpenLayers.Projection("EPSG:900913"));
+                    $('#length').html('Длина: ' + distance + ' м.');
+                    $('input[name="length"]').val(distance);
 					$.cookie("map_lat", xy0.y.toFixed(2), { expires : 1000 });
 					$.cookie("map_lon", xy0.x.toFixed(2), { expires : 1000 });
 					$('input#start').val(xy0.y.toFixed(6)+' '+xy0.x.toFixed(6));
@@ -93,13 +101,22 @@ if(!isset($_POST["polyline"])) {
 					  $('#timezone_offset').val(data);
 					});
 					$('input[name="incident_id"]').val((xy0.y.toFixed(2)*100+xy0.x.toFixed(2)*100) + "FWR<?php echo $last_id; ?>");
+					
+	
+					var size = new OpenLayers.Size(24,24);
+					var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+					var icon = new OpenLayers.Icon('http://individual.icons-land.com/IconsPreview/MapMarkers/PNG/Centered/24x24/MapMarker_Flag4_Right_Pink.png', size, offset);
+					markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(xy0.x,xy0.y).transform(fromProjection,toProjection),icon));
+					
+					
+					
                 },
                 'featureunselected': function(feature) {
                     //document.getElementById('counter').innerHTML = this.selectedFeatures.length;
                 }
             });
 
-            map.addLayers([WazeLiveMapLayer, vectors]);
+            map.addLayers([WazeLiveMapLayer, vectors, markers]);
             map.addControl(new OpenLayers.Control.LayerSwitcher());
             console.log(WazeLiveMapLayer.getExtent);
             drawControls = {
@@ -232,11 +249,10 @@ if(!isset($_POST["polyline"])) {
 		<input type="hidden" name="incident_id" value="">
 		<input type="hidden" name="direction" value="ONE_DIRECTION">
 		<input type="hidden" name="name" value="Russian community">
+		<input type="hidden" name="length" value="0">
 		
 		
-		
-		
-		<p><input type="text" id="start" readonly placeholder="Координаты точки старта"> &mdash; <input type="text" id="end" readonly>
+		<p><input type="text" id="start" readonly placeholder="Координаты точки старта"> &mdash; <input type="text" id="end" readonly> <span id="length"></span>
 		<input type="hidden" name="polyline" value="2">
 		</p>
 		<p><select class="type" name="type" required>
@@ -258,7 +274,7 @@ if(!isset($_POST["polyline"])) {
     </form>
     <script type="text/javascript">
 		var ACCIDENT = '<option value="ACCIDENT_MINOR">Мелкая авария</option><option value="ACCIDENT_MAJOR">Крупная авария</option>';
-		var HAZARD = '<option value="HAZARD_ON_ROAD">Опасность на дороге</option><option value="HAZARD_ON_ROAD_CAR_STOPPED">Автомобиль остановился на дороге</option><option value="HAZARD_ON_ROAD_CONSTRUCTION">Ремонт</option><option value="HAZARD_ON_ROAD_OBJECT">Препятсвие</option><option value="HAZARD_ON_ROAD_POT_HOLE">Яма на дороге</option><option value="HAZARD_ON_ROAD_ROAD_KILL">Сбитое животное</option><option value="HAZARD_ON_SHOULDER">Опасность на обочине</option><option value="HAZARD_ON_SHOULDER_ANIMALS">Животное на обочине</option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED">Стоит машина на дороге</option><option value="HAZARD_WEATHER">Опасность погода</option>';
+		var HAZARD = '<option value="HAZARD_ON_ROAD">Опасность на дороге</option><option value="HAZARD_ON_ROAD_CAR_STOPPED">Автомобиль остановился на дороге</option><option value="HAZARD_ON_ROAD_CONSTRUCTION">Ремонт</option><option value="HAZARD_ON_ROAD_OBJECT">Препятсвие</option><option value="HAZARD_ON_ROAD_POT_HOLE">Яма</option><option value="HAZARD_ON_ROAD_ROAD_KILL">Сбитое животное</option><option value="HAZARD_ON_SHOULDER">Опасность на обочине</option><option value="HAZARD_ON_SHOULDER_ANIMALS">Животное на обочине</option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED">Стоит машина на обочине</option><option value="HAZARD_WEATHER">Плохая погода</option>';
 		var ROAD_CLOSED = '<option value="ROAD_CLOSED_CONSTRUCTION">Ремонт</option><option value="ROAD_CLOSED_EVENT">Мероприятие</option><option value="ROAD_CLOSED_HAZARD">Опасность</option>';
 		$('select.type').change(function(){
 			$('select.subtype').show();
@@ -294,6 +310,8 @@ $( function() {
 	$( "#starttime" ).datetimepicker({ lang: "ru", format:"Y-m-d\\TH:i:s" });
 	$( "#endtime" ).datetimepicker({ lang: "ru", format:"Y-m-d\\TH:i:s" });
 } );
+
+
 	</script>
   </body>
 </html>
@@ -326,8 +344,13 @@ $( function() {
 	if (strlen(trim($data['timezone_offset'])) < 1) {
 		$error_text .= "Ошибка данных";
 	}
+	
 	if ((strlen(trim($data['description'])) < 3) || (strlen(trim($data['description'])) > 100)) {
 		$error_text .= "Поле Описание должно содержать от 3 до 100 символов";
+	}
+	
+	if ($data['length'] < 35) {
+		$error_text .= "Длинна вектора должна быть больше 35 метров.";
 	}
 	
 	if(!empty($error_text)) {
@@ -336,6 +359,7 @@ $( function() {
 	}
 
 	unset($data['timezone_offset']);
+	unset($data['length']);
 	array_walk_recursive($data, "filter");
 	if($last_id = mysql_write_row("feed", $data)) header("Location: /#success-". $last_id);
 			
