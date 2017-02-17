@@ -241,10 +241,10 @@ if(!isset($_POST["polyline"])) {
 		</p>
 		<p><select class="type" name="type" required>
 				<option value="">Выберите тип события</option>
-				<option value="ACCIDENT">ACCIDENT</option>
-				<option value="CONSTRUCTION">CONSTRUCTION</option>
-				<option value="HAZARD">HAZARD</option>
-				<option value="ROAD_CLOSED">ROAD_CLOSED</option>
+				<option value="ACCIDENT">Авария</option>
+				<option value="CONSTRUCTION">Ремонт</option>
+				<option value="HAZARD">Опасность</option>
+				<option value="ROAD_CLOSED">Перекрытие</option>
 			</select>
 
 			<select style="display:none" class="subtype" name="subtype">
@@ -257,9 +257,9 @@ if(!isset($_POST["polyline"])) {
 		<p><input class="w330" type="submit" value="Отправить" /></p>
     </form>
     <script type="text/javascript">
-		var ACCIDENT = '<option value="ACCIDENT_MINOR">ACCIDENT_MINOR</option><option value="ACCIDENT_MAJOR">ACCIDENT_MAJOR</option>';
-		var HAZARD = '<option value="HAZARD_ON_ROAD">HAZARD_ON_ROAD</option><option value="HAZARD_ON_ROAD_CAR_STOPPED">HAZARD_ON_ROAD_CAR_STOPPED</option><option value="HAZARD_ON_ROAD_CONSTRUCTION">HAZARD_ON_ROAD_CONSTRUCTION</option><option value="HAZARD_ON_ROAD_OBJECT">HAZARD_ON_ROAD_OBJECT</option><option value="HAZARD_ON_ROAD_POT_HOLE">HAZARD_ON_ROAD_POT_HOLE</option><option value="HAZARD_ON_ROAD_ROAD_KILL">HAZARD_ON_ROAD_ROAD_KILL</option><option value="HAZARD_ON_SHOULDER">HAZARD_ON_SHOULDER</option><option value="HAZARD_ON_SHOULDER_ANIMALS">HAZARD_ON_SHOULDER_ANIMALS</option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED">HAZARD_ON_SHOULDER_CAR_STOPPED</option><option value="HAZARD_WEATHER">HAZARD_WEATHER</option>';
-		var ROAD_CLOSED = '<option value="ROAD_CLOSED_CONSTRUCTION">ROAD_CLOSED_CONSTRUCTION</option><option value="ROAD_CLOSED_EVENT">ROAD_CLOSED_EVENT</option><option value="ROAD_CLOSED_HAZARD">ROAD_CLOSED_HAZARD</option>';
+		var ACCIDENT = '<option value="ACCIDENT_MINOR">Мелкая авария</option><option value="ACCIDENT_MAJOR">Крупная авария</option>';
+		var HAZARD = '<option value="HAZARD_ON_ROAD">Опасность на дороге</option><option value="HAZARD_ON_ROAD_CAR_STOPPED">Автомобиль остановился на дороге</option><option value="HAZARD_ON_ROAD_CONSTRUCTION">Ремонт</option><option value="HAZARD_ON_ROAD_OBJECT">Препятсвие</option><option value="HAZARD_ON_ROAD_POT_HOLE">Яма на дороге</option><option value="HAZARD_ON_ROAD_ROAD_KILL">Сбитое животное</option><option value="HAZARD_ON_SHOULDER">Опасность на обочине</option><option value="HAZARD_ON_SHOULDER_ANIMALS">Животное на обочине</option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED">Стоит машина на дороге</option><option value="HAZARD_WEATHER">Опасность погода</option>';
+		var ROAD_CLOSED = '<option value="ROAD_CLOSED_CONSTRUCTION">Ремонт</option><option value="ROAD_CLOSED_EVENT">Мероприятие</option><option value="ROAD_CLOSED_HAZARD">Опасность</option>';
 		$('select.type').change(function(){
 			$('select.subtype').show();
 			if($(this).val() === 'HAZARD') {
