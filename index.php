@@ -16,7 +16,7 @@ if(!isset($_POST["polyline"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Feed Waze Russia</title>
-    <link rel="stylesheet" href="style.css?v=007" type="text/css">
+    <link rel="stylesheet" href="style.css?v=008" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css">
 
@@ -216,6 +216,7 @@ if(!isset($_POST["polyline"])) {
 		<input type="hidden" name="timezone_offset" id="timezone_offset" value="+03:00">
 		<input type="hidden" name="incident_id" value="">
 		<input type="hidden" name="direction" value="ONE_DIRECTION">
+		<input type="hidden" name="name" value="Russian community">
 		
 		
 		
@@ -266,10 +267,10 @@ $( function() {
 	$('#nostreet').change(function() {
 		if(this.checked) {
 			$('input[name="street"]').val("No street");
-			$('input[name="street"]').prop('disabled', true);
+			$('input[name="street"]').prop('readonly', "readonly");
 		} else {
 			$('input[name="street"]').val("");
-			$('input[name="street"]').prop('disabled', false);
+			$('input[name="street"]').removeAttr('readonly');
 		};
 	});
 });
