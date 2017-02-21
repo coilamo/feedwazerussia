@@ -1,5 +1,8 @@
 <?php
 
+$mysqli = mysqli_connect($hostname, $username, $password, $dbname);
+mysqli_set_charset($mysqli, "utf8");
+
 # by Mikhail Serov (1234ru@gmail.com)
 # http://webew.ru/articles/3237.webew
 # v. 1.43 (19.12.2016)

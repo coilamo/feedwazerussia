@@ -1,13 +1,14 @@
-<?php 	
+<?php 
+session_start();	
 include("config.php");	
-$mysqli = mysqli_connect($hostname, $username, $password, $dbname);
-mysqli_set_charset($mysqli, "utf8");
-
 include("db-function.php");
 include("functions.php");
+$user = getUserParams();
+
 
 $last_id = mysql_getcell("SELECT MAX(id) FROM feed");
 if(!isset($_POST["polyline"])) { 
+	if($user) echo "Здравствуйте, " . $user['user_login'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,8 +31,8 @@ if(!isset($_POST["polyline"])) {
 	 width: 1024px;
 	}
     </style>
-    <script src="http://dev.openlayers.org/OpenLayers.js"></script>
-    <script  src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/lib/OpenLayers.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.2.4/jquery.datetimepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script type="text/javascript">
@@ -63,7 +64,7 @@ if(!isset($_POST["polyline"])) {
 
         var WazeLiveMapLayer = new OpenLayers.Layer.OSM(
           "Waze Livemap",
-          ['http://tilesworld.waze.com/tiles/${z}/${x}/${y}.png'], 
+          ['https://tilesworld.waze.com/tiles/${z}/${x}/${y}.png'], 
           {zoomOffset: 0, numZoomLevels:19//,resolutions: [19567.8792375,9783.93961875,4891.969809375,2445.984904687,611.496226172,152.874056543,76.437028271,19.109257068,4.777314267,2.388657133]
               
           }
@@ -83,19 +84,23 @@ if(!isset($_POST["polyline"])) {
             });
             vectors.events.on({
                 'featureselected': function(feature) {
-                    var xy0 = this.selectedFeatures[0].geometry.components[0].transform(toProjection,fromProjection);
-                    var xy1 = this.selectedFeatures[0].geometry.components[1].transform(toProjection,fromProjection);
+					var polyline = "";
+					this.selectedFeatures[0].geometry.components.forEach (function(item, i, arr){
+						item_transf = item.transform(toProjection,fromProjection);
+						if(polyline === '') {
+							var xy0 = item_transf;
+						}
+						polyline = polyline + item_transf.y.toFixed(6) + ' ' + item_transf.x.toFixed(6) + ' ';
+					});
+					/*
                     var point1 = new OpenLayers.Geometry.Point(xy0.x, xy0.y).transform(fromProjection,toProjection);
 					var point2 = new OpenLayers.Geometry.Point(xy1.x, xy1.y).transform(fromProjection,toProjection);
 					var line = new OpenLayers.Geometry.LineString([point1, point2]);       
 					var distance = line.getGeodesicLength(new OpenLayers.Projection("EPSG:900913"));
-                    $('#length').html('Длина: ' + distance + ' м.');
-                    $('input[name="length"]').val(distance);
-					$.cookie("map_lat", xy0.y.toFixed(2), { expires : 1000 });
-					$.cookie("map_lon", xy0.x.toFixed(2), { expires : 1000 });
-					$('input#start').val(xy0.y.toFixed(6)+' '+xy0.x.toFixed(6));
-					$('input#end').val(xy1.y.toFixed(6)+' '+xy1.x.toFixed(6));
-					$('input[name="polyline"]').val(xy0.y.toFixed(6) + ' ' + xy0.x.toFixed(6) + ' ' + xy1.y.toFixed(6) + ' ' + xy1.x.toFixed(6));
+					*/
+                    //$('#length').html('Длина: ' + distance + ' м.');
+                    $('input[name="length"]').val(40);
+					$('textarea[name="polyline"]').val(polyline.trim());
 					$('#form').show();
 					$.get( "json.php?lat="+xy0.y+"&lon="+xy0.x, function( data ) {
 					  $('#timezone_offset').val(data);
@@ -105,7 +110,7 @@ if(!isset($_POST["polyline"])) {
 	
 					var size = new OpenLayers.Size(24,24);
 					var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-					var icon = new OpenLayers.Icon('http://individual.icons-land.com/IconsPreview/MapMarkers/PNG/Centered/24x24/MapMarker_Flag4_Right_Pink.png', size, offset);
+					var icon = new OpenLayers.Icon('https://individual.icons-land.com/IconsPreview/MapMarkers/PNG/Centered/24x24/MapMarker_Flag4_Right_Pink.png', size, offset);
 					markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(xy0.x,xy0.y).transform(fromProjection,toProjection),icon));
 					
 					
@@ -131,8 +136,8 @@ if(!isset($_POST["polyline"])) {
 									}
 								},
 								handlerOptions: {
-									maxVertices: 2,
-									single: true,
+									//maxVertices: 2,
+									//single: true,
 									freehand: false,
 								}
 							}
@@ -162,9 +167,9 @@ if(!isset($_POST["polyline"])) {
             
 			map.events.on({
 				"moveend":function(){
-					$.cookie("fwr_lon", map.getCenter().transform(toProjection,fromProjection).lon);
-					$.cookie("fwr_lat", map.getCenter().transform(toProjection,fromProjection).lat);
-					$.cookie("fwr_zoom", map.getZoom());
+					$.cookie("fwr_lon", map.getCenter().transform(toProjection,fromProjection).lon, { expires : 1000 });
+					$.cookie("fwr_lat", map.getCenter().transform(toProjection,fromProjection).lat, { expires : 1000 });
+					$.cookie("fwr_zoom", map.getZoom(), { expires : 1000 });
 
 				}
 			});
@@ -241,19 +246,23 @@ if(!isset($_POST["polyline"])) {
                 </li>
             </ul>
         </li>
+        <li><a id="location"><i class="fa fa-compass" aria-hidden="true" title="Найти моё местоположение"></i></a></li>
     </ul>
     <form id="form" name="alert" method="POST">
 		
 		
 		<input type="hidden" name="timezone_offset" id="timezone_offset" value="+03:00">
 		<input type="hidden" name="incident_id" value="">
-		<input type="hidden" name="direction" value="ONE_DIRECTION">
 		<input type="hidden" name="name" value="Russian community">
 		<input type="hidden" name="length" value="0">
 		
 		
-		<p><input type="text" id="start" readonly placeholder="Координаты точки старта"> &mdash; <input type="text" id="end" readonly> <span id="length"></span>
-		<input type="hidden" name="polyline" value="2">
+		<p><textarea name="polyline" readonly="readonly">test</textarea><span id="length"></span></p>
+		<p><select name="direction" required>
+			<option value>Выберите направление</option>
+			<option value="ONE_DIRECTION">В одну сторону</option>
+			<option value="BOTH_DIRECTIONS">В обе стороны</option>
+		<select>
 		</p>
 		<p><select class="type" name="type" required>
 				<option value="">Выберите тип события</option>
@@ -269,7 +278,11 @@ if(!isset($_POST["polyline"])) {
 		<p><input type="text" id="starttime" name="starttime" placeholder="Дата начала" required> &mdash; <input type="text" id="endtime" name="endtime" placeholder="Дата окончания" required></p>
 		<p><textarea name="description" placeholder="Описание" required></textarea></p>
 		<p><input class="w330" type="text" name="street" placeholder="Улица" required/><input id="nostreet" type="checkbox"> Без названия</p>
-		<p><input class="w330" type="text" name="author" placeholder="Ваш ник" required/></p>
+		<?php if ($user) { ?>
+			<p><input class="w330" type="text" name="author" value="<?php echo $user['user_login'];?>" readonly="readonly"/></p>
+		<?php } else { ?>
+			<p><input class="w330" type="text" name="author" placeholder="Ваш ник" required/></p>
+		<?php } ?>
 		<p><input class="w330" type="submit" value="Отправить" /></p>
     </form>
     <script type="text/javascript">
@@ -294,6 +307,16 @@ $( function() {
 		$('#msg').html("Репорт id "+window.location.hash.substr(1).split('-')[1]+" отправлен на модерацию");
 		window.location.hash = '';
 	}
+	
+	$('#location').on("click", function() {
+		navigator.geolocation.getCurrentPosition(
+			function(position) {
+				alert('Вы здесь: ' +
+					position.coords.latitude + ", " + position.coords.longitude);
+			}
+		);
+	});
+	
 	
 	$('#nostreet').change(function() {
 		if(this.checked) {
@@ -320,7 +343,7 @@ $( function() {
 } else {
 	$data = $_POST;
 	unset($_POST);
-	$data["active"] = 0;
+	$data["active"] = ($user['user_role'] == 2) ? 1 : 0;
 	$data['starttime'] = $data['starttime'] . $data['timezone_offset'];
 	$data['endtime'] = $data['endtime'] . $data['timezone_offset'];
 	$data['creationtime'] = gmdate("Y-m-d\TH:i:s", time() + 3600*(str_replace('0','', $data['timezone_offset'])+date("I"))). $data['timezone_offset'];
@@ -350,7 +373,7 @@ $( function() {
 	}
 	
 	if ($data['length'] < 35) {
-		$error_text .= "Длинна вектора должна быть больше 35 метров.";
+		$error_text .= "Длина вектора должна быть больше 35 метров.";
 	}
 	
 	if(!empty($error_text)) {
