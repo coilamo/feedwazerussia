@@ -85,10 +85,11 @@ if(!isset($_POST["polyline"])) {
             vectors.events.on({
                 'featureselected': function(feature) {
 					var polyline = "";
+					var xy0;
 					this.selectedFeatures[0].geometry.components.forEach (function(item, i, arr){
 						item_transf = item.transform(toProjection,fromProjection);
 						if(polyline === '') {
-							var xy0 = item_transf;
+							xy0 = item_transf;
 						}
 						polyline = polyline + item_transf.y.toFixed(6) + ' ' + item_transf.x.toFixed(6) + ' ';
 					});
@@ -105,7 +106,7 @@ if(!isset($_POST["polyline"])) {
 					$.get( "json.php?lat="+xy0.y+"&lon="+xy0.x, function( data ) {
 					  $('#timezone_offset').val(data);
 					});
-					$('input[name="incident_id"]').val((xy0.y.toFixed(2)*100+xy0.x.toFixed(2)*100) + "FWR<?php echo $last_id; ?>");
+					$('input[name="incident_id"]').val((xy0.y.toFixed(2)*100+xy0.x.toFixed(2)*100) + "FWR<?php echo $last_id + 1; ?>");
 					
 	
 					var size = new OpenLayers.Size(24,24);
