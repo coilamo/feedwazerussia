@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.gstatic.com/road-incidents/incidents_feed.xsd">
+  <incident id="WFRa000001">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:40:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_SHOULDER_ANIMALS</subtype>
+    <description>Сбрось скорость и пристегнись, вейзом клянусь - не пожалеешь! [via MegaRipZ]</description>
+    <location>
+      <street>М7 Волга</street>
+      <polyline>55.77927 48.84001</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-12-31T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000002">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:40:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_SHOULDER_ANIMALS</subtype>
+    <description>Сбрось скорость и пристегнись, вейзом клянусь - не пожалеешь! [via MegaRipZ]</description>
+    <location>
+      <street>М7 Волга</street>
+      <polyline>55.77927 48.84036</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-12-31T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000007">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:49:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Выбоина [via Manzareck]</description>
+    <location>
+      <street>Восточный обвод</street>
+      <polyline>54.19264 37.65825</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-03-20T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000009">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:50:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_CAR_STOPPED</subtype>
+    <description>Парковка на дороге. Требуется пропускать встречных [via Manzareck]</description>
+    <location>
+      <street>улица Серебровская</street>
+      <polyline>54.18564 37.56816 54.18499 37.56829</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-12-31T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000010">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:51:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_CAR_STOPPED</subtype>
+    <description>Парковка на дороге. Требуется пропускать встречных [via Manzareck]</description>
+    <location>
+      <street>улица Тульская</street>
+      <polyline>54.17762 37.56999 54.17726 37.56926</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-12-31T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000011">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:40:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Опасный перекрёсток [via MegaRipZ]</description>
+    <location>
+      <street>улица Ложевая</street>
+      <polyline>54.20032 37.64905 54.20089 37.6472</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-12-31T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000012">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:40:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Опасный перекрёсток [via MegaRipZ]</description>
+    <location>
+      <street>улица Ложевая</street>
+      <polyline>54.20005 37.64885 54.1996 37.6503</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-12-31T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000014">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:40:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_OBJECT</subtype>
+    <description>Внимание! Излюбленное место экипажей ДПС [via MegaRipZ]</description>
+    <location>
+      <street>Р132</street>
+      <polyline>54.16424 37.46642</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-12-31T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000015">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:40:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Внимание! Опасный перекрёсток [via MegaRipZ]</description>
+    <location>
+      <street>Р132</street>
+      <polyline>54.24748 37.32283</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-12-31T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="WFRa000021">
+    <creationtime>2017-02-17T14:54:00+03:00</creationtime>
+    <updatetime>2017-02-28T18:40:00+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_CONSTRUCTION</subtype>
+    <description>Ремонт моста. Возможны ограничения движения [via MegaRipZ]</description>
+    <location>
+      <street>улица Доктора Гумилевской</street>
+      <polyline>54.17129 37.70858 54.17213 37.70719</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T15:00:00+03:00</starttime>
+    <endtime>2017-04-28T15:00:00+03:00</endtime>
+  </incident>
+  <incident id="9178FWR41">
+    <creationtime>2017-02-17T17:37:20+03:00</creationtime>
+    <updatetime>2017-02-28T18:40:20+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Просевший люк [via MegaRipZ]</description>
+    <location>
+      <street>улица Ликбеза</street>
+      <polyline>54.208637 37.572079 54.208722 37.574005</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T17:36:56+03:00</starttime>
+    <endtime>2017-05-30T17:36:58+03:00</endtime>
+  </incident>
+  <incident id="9130FWR59">
+    <creationtime>2017-02-17T20:16:47+03:00</creationtime>
+    <updatetime>2017-02-17T20:16:47+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Впадина на дороге. Не разгоняйся! [via coilamo]</description>
+    <location>
+      <street>улици Карла Маркса</street>
+      <polyline>52.388539 38.914428 52.386856 38.913773</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T18:00:39+03:00</starttime>
+    <endtime>2018-02-17T20:14:57+03:00</endtime>
+  </incident>
+  <incident id="9130FWR60">
+    <creationtime>2017-02-17T20:18:32+03:00</creationtime>
+    <updatetime>2017-02-17T20:18:32+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Впадина на дороге. Не разгоняйся! [via coilamo]</description>
+    <location>
+      <street>улици Карла Маркса</street>
+      <polyline>52.388454 38.914583 52.390758 38.915528</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-17T20:00:08+03:00</starttime>
+    <endtime>2018-02-17T20:00:16+03:00</endtime>
+  </incident>
+  <incident id="9180FWR78">
+    <creationtime>2017-02-19T23:11:43+03:00</creationtime>
+    <updatetime>2017-02-18T54:11:43+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Ямы [via MegaRipZ]</description>
+    <location>
+      <street>улица Пушкинская</street>
+      <polyline>54.188441 37.608471 54.189308 37.606143</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-19T23:11:20+03:00</starttime>
+    <endtime>2017-03-28T23:11:23+03:00</endtime>
+  </incident>
+  <incident id="9323FWR79">
+    <creationtime>2017-02-19T23:17:01+03:00</creationtime>
+    <updatetime>2017-02-19T23:17:01+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Яма на дороге [via coilamo]</description>
+    <location>
+      <street>No street</street>
+      <polyline>55.830300 37.395649 55.830240 37.396480</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-19T23:15:57+03:00</starttime>
+    <endtime>2017-03-31T23:16:06+03:00</endtime>
+  </incident>
+  <incident id="9791FWR80">
+    <creationtime>2017-02-19T23:44:21+03:00</creationtime>
+    <updatetime>2017-02-19T23:44:21+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Тренога днем [via shomgoon]</description>
+    <location>
+      <street>М7 Волга</street>
+      <polyline>56.940295 40.973029 56.939037 40.972433</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-19T23:40:55+03:00</starttime>
+    <endtime>2017-06-30T23:40:57+03:00</endtime>
+  </incident>
+  <incident id="9179FWR94">
+    <creationtime>2017-02-20T15:38:02+03:00</creationtime>
+    <updatetime>2017-02-20T15:38:02+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Яма [via Сантехнег71]</description>
+    <location>
+      <street>проезд Тимирязева</street>
+      <polyline>54.176557 37.607654 54.177663 37.605782</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-20T15:37:36+03:00</starttime>
+    <endtime>2017-03-31T15:37:38+03:00</endtime>
+  </incident>
+  <incident id="9176FWR95">
+    <creationtime>2017-02-21T09:24:46+03:00</creationtime>
+    <updatetime>2017-02-21T09:24:46+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Ямы [via Сантехнег71]</description>
+    <location>
+      <street>улица Демонстрации</street>
+      <polyline>54.192384 37.574365 54.192227 37.575035 54.192004 37.575550 54.191229 37.577015</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-21T09:24:26+03:00</starttime>
+    <endtime>2017-03-31T09:24:28+03:00</endtime>
+  </incident>
+  <incident id="11010FWR104">
+    <creationtime>2017-02-21T17:08:31+04:00</creationtime>
+    <updatetime>2017-02-21T17:08:31+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_WEATHER</subtype>
+    <description>Потоп [via Griev0us]</description>
+    <location>
+      <street>улица Орджоникидзе</street>
+      <polyline>56.832485 53.267148 56.832010 53.268779</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-21T17:07:46+04:00</starttime>
+    <endtime>2017-02-21T23:00:50+04:00</endtime>
+  </incident>
+  <incident id="11004FWR114">
+    <creationtime>2017-02-22T13:23:38+04:00</creationtime>
+    <updatetime>2017-02-22T13:23:38+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Выбоины [via Griev0us]</description>
+    <location>
+      <street>улица Карла Маркса</street>
+      <polyline>56.827645 53.207024 56.825960 53.207281</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-22T13:23:16+04:00</starttime>
+    <endtime>2017-03-01T23:00:18+04:00</endtime>
+  </incident>
+  <incident id="9190FWR120">
+    <creationtime>2017-02-25T22:19:45+03:00</creationtime>
+    <updatetime>2017-02-25T22:19:45+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Опасный перекрёсток [via Сантехнег71]</description>
+    <location>
+      <street>Венёвское шоссе</street>
+      <polyline>54.236021 37.656634 54.236437 37.656891 54.236278 37.656419 54.236237 37.655888 54.236046 37.656167 54.235798 37.656376 54.235535 37.656494 54.235986 37.656628</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-25T22:18:58+03:00</starttime>
+    <endtime>2017-05-31T22:19:03+03:00</endtime>
+  </incident>
+  <incident id="9152FWR121">
+    <creationtime>2017-02-26T21:44:22+03:00</creationtime>
+    <updatetime>2017-02-26T21:44:22+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_OBJECT</subtype>
+    <description>Гигантская лужа. Портал в другое измерение [via MegaRipZ]</description>
+    <location>
+      <street>улица Молодёжная</street>
+      <polyline>54.018020 37.501597 54.018625 37.502884</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-26T21:41:53+03:00</starttime>
+    <endtime>2017-04-30T21:41:56+03:00</endtime>
+  </incident>
+  <incident id="9180FWR123">
+    <creationtime>2017-02-27T10:02:27+03:00</creationtime>
+    <updatetime>2017-02-27T10:02:27+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Опасный перекрёсток [via Сантехнег71]</description>
+    <location>
+      <street>улица Тургеневская</street>
+      <polyline>54.186509 37.613870 54.187856 37.615328 54.191123 37.618847</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-27T10:02:06+03:00</starttime>
+    <endtime>2017-04-30T10:02:07+03:00</endtime>
+  </incident>
+  <incident id="9525FWR124">
+    <creationtime>2017-02-27T20:53:48+03:00</creationtime>
+    <updatetime>2017-02-27T20:53:48+03:00</updatetime>
+    <type>CONSTRUCTION</type>
+    <description>ремонт моста [via shomgoon]</description>
+    <location>
+      <street>М7 Волга</street>
+      <polyline>55.928144 39.322746 55.928220 39.323706</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-27T20:53:16+03:00</starttime>
+    <endtime>2017-05-31T20:53:20+03:00</endtime>
+  </incident>
+  <incident id="9320FWR125">
+    <creationtime>2017-02-28T12:55:23+03:00</creationtime>
+    <updatetime>2017-02-28T12:55:23+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Яма [via coilamo]</description>
+    <location>
+      <street>No street</street>
+      <polyline>55.814549 37.391400 55.815185 37.390842</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-28T12:54:59+03:00</starttime>
+    <endtime>2017-03-04T12:55:02+03:00</endtime>
+  </incident>
+  <incident id="9323FWR126">
+    <creationtime>2017-03-04T01:31:30+03:00</creationtime>
+    <updatetime>2017-03-04T01:31:30+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Яма [via coilamo]</description>
+    <location>
+      <street>No street</street>
+      <polyline>55.831373 37.399865 55.831201 37.400777</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-04T01:30:24+03:00</starttime>
+    <endtime>2017-03-31T01:30:28+03:00</endtime>
+  </incident>
+  <incident id="11003FWR128">
+    <creationtime>2017-03-15T10:56:37+04:00</creationtime>
+    <updatetime>2017-03-15T10:56:37+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Дороги нет [via Waze18]</description>
+    <location>
+      <street>Партизанская улица</street>
+      <polyline>56.823366 53.214679 56.822726 53.214808 56.822646 53.214818</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-15T10:56:05+04:00</starttime>
+    <endtime>2017-05-01T10:56:08+04:00</endtime>
+  </incident>
+  <incident id="11003FWR129">
+    <creationtime>2017-03-15T10:57:21+04:00</creationtime>
+    <updatetime>2017-03-15T10:57:21+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Дороги нет [via Waze18]</description>
+    <location>
+      <street>Партизанская улица</street>
+      <polyline>56.821663 53.214963 56.822411 53.214845</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-15T10:57:04+04:00</starttime>
+    <endtime>2017-05-01T10:57:06+04:00</endtime>
+  </incident>
+  <incident id="11009FWR130">
+    <creationtime>2017-03-15T14:43:50+04:00</creationtime>
+    <updatetime>2017-03-15T14:43:50+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Выбоины в левой полосе [via Waze18]</description>
+    <location>
+      <street>улица Холмогорова</street>
+      <polyline>56.875514 53.207593 56.875731 53.206380</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-15T14:43:10+04:00</starttime>
+    <endtime>2017-05-01T14:43:13+04:00</endtime>
+  </incident>
+  <incident id="11007FWR131">
+    <creationtime>2017-03-15T14:45:01+04:00</creationtime>
+    <updatetime>2017-03-15T14:45:01+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Выбоины [via Waze18]</description>
+    <location>
+      <street>улица Металлургов</street>
+      <polyline>56.876616 53.193677 56.875643 53.193811</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-15T14:44:25+04:00</starttime>
+    <endtime>2017-05-01T14:44:27+04:00</endtime>
+  </incident>
+  <incident id="11011FWR132">
+    <creationtime>2017-03-16T22:12:36+04:00</creationtime>
+    <updatetime>2017-03-16T22:12:36+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Уборка снега [via Waze18]</description>
+    <location>
+      <street>улица Серова</street>
+      <polyline>56.867197 53.243717 56.868305 53.244521</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-16T22:11:24+04:00</starttime>
+    <endtime>2017-03-17T06:00:54+04:00</endtime>
+  </incident>
+  <incident id="11006FWR133">
+    <creationtime>2017-03-16T23:25:57+04:00</creationtime>
+    <updatetime>2017-03-16T23:25:57+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Уборка снега [via Waze18]</description>
+    <location>
+      <street>No street</street>
+      <polyline>56.837671 53.217013 56.837794 53.217088 56.837946 53.217055 56.838081 53.216937 56.838158 53.216669</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-16T23:25:31+04:00</starttime>
+    <endtime>2017-03-17T05:00:34+04:00</endtime>
+  </incident>
+  <incident id="11007FWR134">
+    <creationtime>2017-03-16T23:28:17+04:00</creationtime>
+    <updatetime>2017-03-16T23:28:17+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Уборка снега [via Waze18]</description>
+    <location>
+      <street>улица Воровского</street>
+      <polyline>56.836016 53.234028 56.835493 53.234211</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-16T23:27:49+04:00</starttime>
+    <endtime>2017-03-17T05:00:53+04:00</endtime>
+  </incident>
+  <incident id="11007FWR135">
+    <creationtime>2017-03-16T23:29:46+04:00</creationtime>
+    <updatetime>2017-03-16T23:29:46+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Уборка снега [via Waze18]</description>
+    <location>
+      <street>улица Коммунаров</street>
+      <polyline>56.848403 53.218611 56.847904 53.218783</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-16T23:29:22+04:00</starttime>
+    <endtime>2017-03-17T05:00:25+04:00</endtime>
+  </incident>
+  <incident id="11008FWR136">
+    <creationtime>2017-03-16T23:31:03+04:00</creationtime>
+    <updatetime>2017-03-16T23:31:03+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Уборка снега [via Waze18]</description>
+    <location>
+      <street>Удмуртская улица</street>
+      <polyline>56.862916 53.222280 56.862458 53.221894</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-16T23:30:28+04:00</starttime>
+    <endtime>2017-03-17T05:00:32+04:00</endtime>
+  </incident>
+  <incident id="11004FWR137">
+    <creationtime>2017-03-16T23:32:09+04:00</creationtime>
+    <updatetime>2017-03-16T23:32:09+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Уборка снега [via Waze18]</description>
+    <location>
+      <street>улица Кирова</street>
+      <polyline>56.861226 53.182991 56.861156 53.181575</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-16T23:31:42+04:00</starttime>
+    <endtime>2017-03-17T05:00:44+04:00</endtime>
+  </incident>
+  <incident id="11010FWR138">
+    <creationtime>2017-03-16T23:54:18+04:00</creationtime>
+    <updatetime>2017-03-16T23:54:18+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Уборка снега [via Waze18]</description>
+    <location>
+      <street>Авангардная улица</street>
+      <polyline>56.859467 53.236872 56.859795 53.235284</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-16T23:53:23+04:00</starttime>
+    <endtime>2017-03-17T05:00:25+04:00</endtime>
+  </incident>
+  <incident id="11009FWR139">
+    <creationtime>2017-03-17T00:14:42+04:00</creationtime>
+    <updatetime>2017-03-17T00:14:42+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD</subtype>
+    <description>Уборка снега [via Waze18]</description>
+    <location>
+      <street>Авангардная улица</street>
+      <polyline>56.860769 53.230327 56.860417 53.232151</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-17T00:14:17+04:00</starttime>
+    <endtime>2017-03-17T05:00:19+04:00</endtime>
+  </incident>
+  <incident id="9176FWR141">
+    <creationtime>2017-03-17T11:23:17+03:00</creationtime>
+    <updatetime>2017-03-17T11:23:17+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Выбоина [via MegaRipZ]</description>
+    <location>
+      <street>Городской переулок</street>
+      <polyline>54.159295 37.602786 54.158839 37.603596</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-17T11:23:06+03:00</starttime>
+    <endtime>2017-03-31T11:23:09+03:00</endtime>
+  </incident>
+  <incident id="9179FWR142">
+    <creationtime>2017-03-17T11:24:23+03:00</creationtime>
+    <updatetime>2017-04-06T09:39:23+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Выбоина [via MegaRipZ]</description>
+    <location>
+      <street>улица Мосина</street>
+      <polyline>54.203262 37.591386 54.203070 37.593344</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-17T11:24:20+03:00</starttime>
+    <endtime>2017-04-16T23:59:22+03:00</endtime>
+  </incident>
+  <incident id="9181FWR143">
+    <creationtime>2017-03-17T15:36:58+03:00</creationtime>
+    <updatetime>2017-03-17T15:36:58+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Огромная яма. Объезжать слева, по трамвайке [via MegaRipZ]</description>
+    <location>
+      <street>улица Кауля</street>
+      <polyline>54.176429 37.626368 54.176058 37.623927</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-17T15:36:31+03:00</starttime>
+    <endtime>2017-04-30T15:36:34+03:00</endtime>
+  </incident>
+  <incident id="9181FWR148">
+    <creationtime>2017-03-17T16:50:19+03:00</creationtime>
+    <updatetime>2017-03-17T16:50:19+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Яма [via MegaRipZ]</description>
+    <location>
+      <street>улица Оборонная</street>
+      <polyline>54.179082 37.627387 54.180293 37.626845</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-17T16:50:19+03:00</starttime>
+    <endtime>2017-04-30T16:50:21+03:00</endtime>
+  </incident>
+  <incident id="11010FWR149">
+    <creationtime>2017-03-20T00:05:28+04:00</creationtime>
+    <updatetime>2017-03-20T00:05:28+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_CAR_STOPPED</subtype>
+    <description>Уборка снега [via Griev0us]</description>
+    <location>
+      <street>Удмуртская улица</street>
+      <polyline>56.879125 53.223600 56.880110 53.224265</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-20T00:05:06+04:00</starttime>
+    <endtime>2017-03-20T05:00:09+04:00</endtime>
+  </incident>
+  <incident id="11011FWR150">
+    <creationtime>2017-03-20T09:09:20+04:00</creationtime>
+    <updatetime>2017-03-20T09:09:20+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_SHOULDER_ANIMALS</subtype>
+    <description>Засада [via Waze18]</description>
+    <location>
+      <street>Буммашевская улица</street>
+      <polyline>56.882877 53.228927 56.883035 53.228101</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-20T09:08:25+04:00</starttime>
+    <endtime>2017-03-20T10:00:27+04:00</endtime>
+  </incident>
+  <incident id="9176FWR151">
+    <creationtime>2017-03-20T10:11:03+03:00</creationtime>
+    <updatetime>2017-03-20T10:11:03+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Яма посередине проезжей части [via MegaRipZ]</description>
+    <location>
+      <street>улица Тульского Рабочего Полка</street>
+      <polyline>54.177176 37.578673 54.176218 37.581172</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-20T10:10:56+03:00</starttime>
+    <endtime>2017-03-31T10:10:59+03:00</endtime>
+  </incident>
+  <incident id="9179FWR152">
+    <creationtime>2017-03-20T17:30:55+03:00</creationtime>
+    <updatetime>2017-03-20T17:30:55+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Ямы [via MegaRipZ]</description>
+    <location>
+      <street>улица Мориса Тореза</street>
+      <polyline>54.182952 37.608799 54.181625 37.607565</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-20T17:30:56+03:00</starttime>
+    <endtime>2017-04-30T17:30:59+03:00</endtime>
+  </incident>
+  <incident id="9331FWR153">
+    <creationtime>2017-03-23T14:06:35+03:00</creationtime>
+    <updatetime>2017-03-23T14:06:35+03:00</updatetime>
+    <type>CONSTRUCTION</type>
+    <description>Ремонт на две полосы [via coilamo]</description>
+    <location>
+      <street>улица Константина Царева</street>
+      <polyline>55.814440 37.501006 55.814061 37.498828</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-23T14:00:28+03:00</starttime>
+    <endtime>2017-05-23T14:05:31+03:00</endtime>
+  </incident>
+  <incident id="9180FWR78">
+    <creationtime>2017-02-19T23:11:43+03:00</creationtime>
+    <updatetime>2017-03-28T09:01:43+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Ямы [via MegaRipZ]</description>
+    <location>
+      <street>улица Пушкинская</street>
+      <polyline>54.188441 37.608471 54.189308 37.606143</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-02-19T23:11:20+03:00</starttime>
+    <endtime>2017-04-30T23:11:23+03:00</endtime>
+  </incident>
+  <incident id="9125FWR155">
+    <creationtime>2017-03-30T10:06:05+03:00</creationtime>
+    <updatetime>2017-03-30T10:06:05+03:00</updatetime>
+    <type>CONSTRUCTION</type>
+    <description>Ремонт моста. Реверсивное движение [via MegaRipZ]</description>
+    <location>
+      <street>Воронежское шоссе</street>
+      <polyline>53.129835 38.120554 53.129510 38.121182</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-03-30T10:05:31+03:00</starttime>
+    <endtime>2017-08-31T10:05:34+03:00</endtime>
+  </incident>
+  <incident id="9176FWR157">
+    <creationtime>2017-04-06T10:31:42+03:00</creationtime>
+    <updatetime>2017-04-06T10:31:42+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Ямы. Не разгоняйся! [via MegaRipZ]</description>
+    <location>
+      <street>улица Демонстрации</street>
+      <polyline>54.192245 37.574794 54.192346 37.574440 54.192371 37.574048 54.192387 37.573684</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-04-06T10:31:03+03:00</starttime>
+    <endtime>2017-05-31T10:31:06+03:00</endtime>
+  </incident>
+  <incident id="9177FWR158">
+    <creationtime>2017-04-06T10:32:44+03:00</creationtime>
+    <updatetime>2017-04-06T10:32:44+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Ямы. Не разгоняйся! [via MegaRipZ]</description>
+    <location>
+      <street>улица Демонстрации</street>
+      <polyline>54.191709 37.576103 54.191376 37.576709 54.191219 37.577063 54.191122 37.577460 54.191084 37.578109</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-04-06T10:32:22+03:00</starttime>
+    <endtime>2017-05-31T10:32:24+03:00</endtime>
+  </incident>
+  <incident id="9165FWR164">
+    <creationtime>2017-04-06T13:03:45+03:00</creationtime>
+    <updatetime>2017-04-06T13:03:45+03:00</updatetime>
+    <type>POLICE</type>
+    <subtype>POLICE_VISIBLE</subtype>
+    <description>Пост ДПС [via MegaRipZ]</description>
+    <location>
+      <street>М2 Крым</street>
+      <polyline>54.153469 37.497267</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-04-06T13:03:01+03:00</starttime>
+    <endtime>2017-12-31T13:03:10+03:00</endtime>
+  </incident>
+  <incident id="11030FWR165">
+    <creationtime>2017-04-07T10:32:15+04:00</creationtime>
+    <updatetime>2017-04-07T10:32:15+04:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_SHOULDER_ANIMALS</subtype>
+    <description>ДПС [via Waze18]</description>
+    <location>
+      <street>No street</street>
+      <polyline>56.914142 53.394741 56.914207 53.396136</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-04-07T10:31:12+04:00</starttime>
+    <endtime>2017-04-07T19:00:13+04:00</endtime>
+  </incident>
+  <incident id="9181FWR166">
+    <creationtime>2017-04-07T10:00:52+03:00</creationtime>
+    <updatetime>2017-04-07T10:05:52+03:00</updatetime>
+    <type>ACCIDENT</type>
+    <subtype>ACCIDENT_MAJOR</subtype>
+    <description>Очередной мудак поворачивал налево [via MegaRipZ]</description>
+    <location>
+      <street>улица Советская</street>
+      <polyline>54.197955 37.611524 54.198636 37.611412</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-04-07T10:00:22+03:00</starttime>
+    <endtime>2017-04-07T11:00:24+03:00</endtime>
+  </incident>
+  <incident id="11030FWR167">
+    <creationtime>2017-04-07T11:21:23+04:00</creationtime>
+    <updatetime>2017-04-07T11:21:23+04:00</updatetime>
+    <type>POLICE</type>
+    <subtype>POLICE_VISIBLE</subtype>
+    <description>ДПС [via Waze18]</description>
+    <location>
+      <street>No street</street>
+      <polyline>56.914160 53.394972 56.914210 53.396157</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-04-07T11:20:52+04:00</starttime>
+    <endtime>2017-04-08T01:00:54+04:00</endtime>
+  </incident>
+</incidents>
