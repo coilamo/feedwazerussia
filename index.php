@@ -267,6 +267,7 @@ if(!isset($_POST["polyline"])) {
 		</p>
 		<p><select class="type" name="type" required>
 				<option value="">Выберите тип события</option>
+				<option value="CHIT_CHAT">Чат</option>
 				<option value="POLICE">Полиция</option>
 				<option value="JAM">Пробка</option>
 				<option value="ACCIDENT">Авария</option>
