@@ -8,7 +8,6 @@ $user = getUserParams();
 
 $last_id = mysql_getcell("SELECT MAX(id) FROM feed");
 if(!isset($_POST["polyline"])) { 
-	if($user) echo "Здравствуйте, " . $user['user_login'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -217,6 +216,14 @@ if(!isset($_POST["polyline"])) {
     </script>
   </head>
   <body onload="init()">
+	<?php 
+		if($user) echo "Здравствуйте, " . $user['user_login'];
+		else {
+			echo "Для работы в системе необходимо <a href=\"login.php?redir=" . urlencode($_SERVER['REQUEST_URI']) . "\" >авторизоваться</a> или <a href=\"register.php\" >зарегистрироваться</a>";
+			echo "</body></html>";
+			exit();
+		}
+	?>
 	<div id="msg"></div>
     <div id="map" class="smallmap"></div>
         <ul id="controlToggle">
