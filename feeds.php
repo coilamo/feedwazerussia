@@ -45,6 +45,7 @@ if(!isset($_POST["feeds"])) {
 				<td><?php echo $feed["type"];?></td>
 				<td><?php echo $feed["subtype"];?></td>
 				<td><?php echo $feed["direction"];?></td>
+				<td><?php echo $feed["comment"];?></td>
 				<td><input type='checkbox' name='feeds[]' value='<?php echo $feed["id"];?>'></td>
 			</tr>
 		<?php } ?>

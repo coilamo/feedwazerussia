@@ -217,8 +217,10 @@ if(!isset($_POST["polyline"])) {
   </head>
   <body onload="init()">
 	<?php 
-		if($user) echo "Здравствуйте, " . $user['user_login'];
-		else {
+		if($user) {
+			echo "Здравствуйте, " . $user['user_login'];
+			echo " | <a href=\"feeds.php\">Ваши фиды</a>";
+		} else {
 			echo "Для работы в системе необходимо <a href=\"login.php?redir=" . urlencode($_SERVER['REQUEST_URI']) . "\" >авторизоваться</a> или <a href=\"register.php\" >зарегистрироваться</a>";
 			echo "</body></html>";
 			exit();
@@ -288,6 +290,7 @@ if(!isset($_POST["polyline"])) {
 		</p>
 		<p><input type="text" id="starttime" name="starttime" placeholder="Дата начала" required> &mdash; <input type="text" id="endtime" name="endtime" placeholder="Дата окончания" required></p>
 		<p><textarea name="description" placeholder="Описание" required></textarea></p>
+		<p><textarea name="comment" placeholder="Комментарий (например, город)" required></textarea></p>
 		<p><input class="w330" type="text" name="street" placeholder="Улица" required/><input id="nostreet" type="checkbox"> Без названия</p>
 		<?php if ($user) { ?>
 			<p><input class="w330" type="text" name="author" value="<?php echo $user['user_login'];?>" readonly="readonly"/></p>
@@ -300,7 +303,7 @@ if(!isset($_POST["polyline"])) {
 		var POLICE = '<option value="POLICE_VISIBLE">Видимая полиция</option><option value="POLICE_HIDING">Скрытая засада полиции</option>';
 		var JAM = '<option value="JAM_LIGHT_TRAFFIC">Небольшая пробка</option><option value="JAM_MODERATE_TRAFFIC">Средняя пробка</option><option value="JAM_HEAVY_TRAFFIC">Стоим в пробке</option><option value="JAM_STAND_STILL_TRAFFIC">Полный тупик</option>';
 		var ACCIDENT = '<option value="ACCIDENT_MINOR">Мелкая авария</option><option value="ACCIDENT_MAJOR">Крупная авария</option>';
-		var HAZARD = '<option value="HAZARD_ON_ROAD">Опасность на дороге</option><option value="HAZARD_ON_ROAD_CAR_STOPPED">Автомобиль остановился на дороге</option><option value="HAZARD_ON_ROAD_CONSTRUCTION">Ремонт</option><option value="HAZARD_ON_ROAD_OBJECT">Препятствие</option><option value="HAZARD_ON_ROAD_POT_HOLE">Яма</option><option value="HAZARD_ON_ROAD_ROAD_KILL">Сбитое животное</option><option value="HAZARD_ON_SHOULDER">Опасность на обочине</option><option value="HAZARD_ON_SHOULDER_ANIMALS">Животное на обочине</option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED">Стоит машина на обочине</option><option value="HAZARD_WEATHER">Плохая погода</option><option value="HAZARD_ON_SHOULDER_MISSING_SIGN">Отсутствует знак</option><option value="HAZARD_WEATHER_FOG">Туман</option><option value="HAZARD_WEATHER_HAIL">Град</option><option value="HAZARD_WEATHER_HEAVY_RAIN">Ливень</option><option value="HAZARD_WEATHER_HEAVY_SNOW">Сильный снегопад</option><option value="HAZARD_WEATHER_FLOOD">Наводнение</option><option value="HAZARD_WEATHER_MONSOON">Муссон</option><option value="HAZARD_WEATHER_TORNADO">Торнадо</option><option value="HAZARD_WEATHER_HEAT_WAVE">Сильная жара</option><option value="HAZARD_WEATHER_HURRICANE">Ураган</option><option value="HAZARD_WEATHER_FREEZING_RAIN">Ледяной дождь</option><option value="HAZARD_ON_ROAD_LANE_CLOSED">Закрыта полоса</option><option value="HAZARD_ON_ROAD_OIL">Пролито масло</option><option value="HAZARD_ON_ROAD_ICE">Гололёд</option>';
+		var HAZARD = '<option value="HAZARD_ON_ROAD">Опасность на дороге</option><option value="HAZARD_ON_ROAD_CAR_STOPPED">Автомобиль остановился на дороге</option><option value="HAZARD_ON_ROAD_CONSTRUCTION">Ремонт</option><option value="HAZARD_ON_ROAD_OBJECT">Препятсвие</option><option value="HAZARD_ON_ROAD_POT_HOLE">Яма</option><option value="HAZARD_ON_ROAD_ROAD_KILL">Сбитое животное</option><option value="HAZARD_ON_SHOULDER">Опасность на обочине</option><option value="HAZARD_ON_SHOULDER_ANIMALS">Животное на обочине</option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED">Стоит машина на обочине</option><option value="HAZARD_WEATHER">Плохая погода</option><option value="HAZARD_ON_SHOULDER_MISSING_SIGN">Отсутствует знак</option><option value="HAZARD_WEATHER_FOG">Туман</option><option value="HAZARD_WEATHER_HAIL">Град</option><option value="HAZARD_WEATHER_HEAVY_RAIN">Ливень</option><option value="HAZARD_WEATHER_HEAVY_SNOW">Сильный снегопад</option><option value="HAZARD_WEATHER_FLOOD">Наводнение</option><option value="HAZARD_WEATHER_MONSOON">Муссон</option><option value="HAZARD_WEATHER_TORNADO">Торнадо</option><option value="HAZARD_WEATHER_HEAT_WAVE">Сильная жара</option><option value="HAZARD_WEATHER_HURRICANE">Ураган</option><option value="HAZARD_WEATHER_FREEZING_RAIN">Ледяной дождь</option><option value="HAZARD_ON_ROAD_LANE_CLOSED">Закрыта полоса</option><option value="HAZARD_ON_ROAD_OIL">Пролито масло</option><option value="HAZARD_ON_ROAD_ICE">Гололёд</option>';
 		var ROAD_CLOSED = '<option value="ROAD_CLOSED_CONSTRUCTION">Ремонт</option><option value="ROAD_CLOSED_EVENT">Мероприятие</option><option value="ROAD_CLOSED_HAZARD">Опасность</option>';
 		$('select.type').change(function(){
 			$('select.subtype').show();
@@ -387,6 +390,10 @@ $( function() {
 	
 	if ((strlen(trim($data['description'])) < 3) || (strlen(trim($data['description'])) > 100)) {
 		$error_text .= "Поле Описание должно содержать от 3 до 100 символов";
+	}
+	
+	if ((strlen(trim($data['comment'])) < 3) || (strlen(trim($data['comment'])) > 255)) {
+		$error_text .= "Поле Комментарий должно содержать от 3 до 255 символов";
 	}
 	
 	if ($data['length'] < 35) {
