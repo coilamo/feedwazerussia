@@ -68,7 +68,7 @@ if(!isset($_POST["feeds"])) {
 				<td><?php echo $feed["subtype"];?></td>
 				<td><?php echo $feed["direction"];?></td>
 				<td><?php echo $feed["comment"];?></td>
-				<td><?php echo '<a href="' . $permalink . '">Livemap</a>';?></td>
+				<td><?php echo '<a href="' . $permalink . '"target="_blank">Livemap</a>';?></td>
 				<td><input type='checkbox' name='feeds[]' value='<?php echo $feed["id"];?>'></td>
 			</tr>
 		<?php } ?>
