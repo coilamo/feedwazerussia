@@ -21,19 +21,37 @@ if(!isset($_POST["feeds"])) {
   </head>
   <body>
 	<?php 
-		if($user) echo "Здравствуйте, " . $user['user_login'];
-		else {
+		if($user) {
+			echo "Здравствуйте, " . $user['user_login'];
+			echo " | <a href=\"/\">Главная</a>";
+		} else {
 			echo "Для работы в системе необходимо <a href=\"login.php?redir=" . urlencode($_SERVER['REQUEST_URI']) . "\" >авторизоваться</a> или <a href=\"register.php\" >зарегистрироваться</a>";
 			echo "</body></html>";
 			exit();
 		}
+		$curdate = date('Y-m-d\TH:i:s'); 
 	?>	  
 	
 	<form action="feeds.php" method="POST">
 		<table border="1">
-		<?php foreach($feeds AS $ind => $feed) { ?>
 			<tr>
-				<td><?php echo $ind+1;?></td>
+				<th>ID</th>
+				<th>Incident ID</th>
+				<th>Создан</th>
+				<th>Описание</th>
+				<th>Polyline</th>
+				<th>Начало</th>
+				<th>Окончание</th>
+				<th>Улица</th>
+				<th>Тип</th>
+				<th>Подтиа</th>
+				<th>Направление</th>
+				<th>Комментарий</th>
+				<th>x</th>
+			</tr>
+			
+		<?php foreach($feeds AS $ind => $feed) { ?>
+			<tr<?php if(strtotime($curdate) > strtotime($feed["endtime"])) { echo ' style="background-color:#FFCCCC"'; }elseif(strtotime($curdate) < strtotime($feed["starttime"])) { echo ' style="background-color:#CCCCFF"'; }?>>
 				<td><?php echo $feed["id"];?></td>
 				<td><?php echo $feed["incident_id"];?></td>
 				<td><?php echo $feed["creationtime"];?></td>
