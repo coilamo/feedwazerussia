@@ -47,11 +47,15 @@ if(!isset($_POST["feeds"])) {
 				<th>Подтиа</th>
 				<th>Направление</th>
 				<th>Комментарий</th>
+				<th>Пермалинк</th>
 				<th>x</th>
 			</tr>
 			
 		<?php foreach($feeds AS $ind => $feed) { ?>
 			<tr<?php if(strtotime($curdate) > strtotime($feed["endtime"])) { echo ' style="background-color:#FFCCCC"'; }elseif(strtotime($curdate) < strtotime($feed["starttime"])) { echo ' style="background-color:#CCCCFF"'; }?>>
+				<?php $geo=$feed["polyline"];?>
+				<?php list($lat, $lon) = explode(' ', $geo);?>
+				<?php $permalink="https://www.waze.com/en/livemap?zoom=17&lat=" . $lat . "&lon=". $lon;?>
 				<td><?php echo $feed["id"];?></td>
 				<td><?php echo $feed["incident_id"];?></td>
 				<td><?php echo $feed["creationtime"];?></td>
@@ -64,6 +68,7 @@ if(!isset($_POST["feeds"])) {
 				<td><?php echo $feed["subtype"];?></td>
 				<td><?php echo $feed["direction"];?></td>
 				<td><?php echo $feed["comment"];?></td>
+				<td><?php echo '<a href="' . $permalink . '">Livemap</a>';?></td>
 				<td><input type='checkbox' name='feeds[]' value='<?php echo $feed["id"];?>'></td>
 			</tr>
 		<?php } ?>
