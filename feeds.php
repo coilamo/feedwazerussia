@@ -35,6 +35,7 @@ if(!isset($_POST["feeds"])) {
 	<form action="feeds.php" method="POST">
 		<table border="1">
 			<tr>
+				<th>x</th>
 				<th>ID</th>
 				<th>Incident ID</th>
 				<th>Создан</th>
@@ -48,7 +49,6 @@ if(!isset($_POST["feeds"])) {
 				<th>Направление</th>
 				<th>Комментарий</th>
 				<th>Пермалинк</th>
-				<th>x</th>
 			</tr>
 			
 		<?php foreach($feeds AS $ind => $feed) { ?>
@@ -56,6 +56,7 @@ if(!isset($_POST["feeds"])) {
 				<?php $geo=$feed["polyline"];?>
 				<?php list($lat, $lon) = explode(' ', $geo);?>
 				<?php $permalink="https://www.waze.com/en/livemap?zoom=17&lat=" . $lat . "&lon=". $lon;?>
+				<td><input type='checkbox' name='feeds[]' value='<?php echo $feed["id"];?>'></td>
 				<td><?php echo $feed["id"];?></td>
 				<td><?php echo $feed["incident_id"];?></td>
 				<td><?php echo $feed["creationtime"];?></td>
@@ -69,7 +70,6 @@ if(!isset($_POST["feeds"])) {
 				<td><?php echo $feed["direction"];?></td>
 				<td><?php echo $feed["comment"];?></td>
 				<td><?php echo '<a href="' . $permalink . '"target="_blank">Livemap</a>';?></td>
-				<td><input type='checkbox' name='feeds[]' value='<?php echo $feed["id"];?>'></td>
 			</tr>
 		<?php } ?>
 		</table>
