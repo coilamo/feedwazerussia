@@ -592,7 +592,7 @@
       <name>Russian community</name>
     </source>
     <starttime>2017-03-17T11:24:20+03:00</starttime>
-    <endtime>2017-04-16T23:59:22+03:00</endtime>
+    <endtime>2017-04-30T23:59:22+03:00</endtime>
   </incident>
   <incident id="9181FWR143">
     <creationtime>2017-03-17T15:36:58+03:00</creationtime>
@@ -2645,5 +2645,39 @@
     </source>
     <starttime>2017-04-16T23:00:58+04:00</starttime>
     <endtime>2017-04-17T23:00:00+04:00</endtime>
+  </incident>
+  <incident id="9796FWR324">
+    <creationtime>2017-04-17T09:07:54+03:00</creationtime>
+    <updatetime>2017-04-17T09:07:54+03:00</updatetime>
+    <type>HAZARD</type>
+    <subtype>HAZARD_ON_ROAD_POT_HOLE</subtype>
+    <description>Яма [via Sonar2000]</description>
+    <location>
+      <street>No street</street>
+      <polyline>56.961207 40.995195 56.960997 40.995146</polyline>
+      <direction>ONE_DIRECTION</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-04-17T09:00:47+03:00</starttime>
+    <endtime>2017-05-01T09:09:52+03:00</endtime>
+  </incident>
+  <incident id="9798FWR326">
+    <creationtime>2017-04-17T09:09:44+03:00</creationtime>
+    <updatetime>2017-04-17T09:09:44+03:00</updatetime>
+    <type>ACCIDENT</type>
+    <subtype>ACCIDENT_MAJOR</subtype>
+    <description>Левый ряд [via Sonar2000]</description>
+    <location>
+      <street>No street</street>
+      <polyline>56.966053 41.005296 56.965848 41.004813</polyline>
+      <direction>BOTH_DIRECTIONS</direction>
+    </location>
+    <source>
+      <name>Russian community</name>
+    </source>
+    <starttime>2017-04-17T09:11:44+03:00</starttime>
+    <endtime>2017-04-17T14:00:50+03:00</endtime>
   </incident>
 </incidents>

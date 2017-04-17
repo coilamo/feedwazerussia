@@ -37,7 +37,7 @@ if(!isset($_POST["feeds"])) {
 			<tr>
 				<th>x</th>
 				<th>ID</th>
-				<th>Incident ID</th>
+<!--				<th>Incident ID</th> -->
 				<th>Создан</th>
 				<th>Описание</th>
 				<th>Polyline</th>
@@ -45,7 +45,7 @@ if(!isset($_POST["feeds"])) {
 				<th>Окончание</th>
 				<th>Улица</th>
 				<th>Тип</th>
-				<th>Подтиа</th>
+				<th>Подтип</th>
 				<th>Направление</th>
 				<th>Комментарий</th>
 				<th>Пермалинк</th>
@@ -58,7 +58,7 @@ if(!isset($_POST["feeds"])) {
 				<?php $permalink="https://www.waze.com/en/livemap?zoom=17&lat=" . $lat . "&lon=". $lon;?>
 				<td><input type='checkbox' name='feeds[]' value='<?php echo $feed["id"];?>'></td>
 				<td><?php echo $feed["id"];?></td>
-				<td><?php echo $feed["incident_id"];?></td>
+<!--				<td><?php echo $feed["incident_id"];?></td> -->
 				<td><?php echo $feed["creationtime"];?></td>
 				<td><?php echo $feed["description"];?></td>
 				<td><?php echo $feed["polyline"];?></td>
