@@ -1,4 +1,6 @@
 
+p {margin: 10px 0;}
+
 ul, li {
 	padding:0;
 	margin:0;
@@ -14,8 +16,12 @@ ul {
 	overflow: hidden;
 }
 
+textarea[name="polyline"] {
+	height: 40px;
+}
+
 textarea {
-	width: 330px;
+	width: 440px;
 	height: 150px;
 }
 
@@ -25,8 +31,33 @@ ul#controlToggle {
 .w330 {
 	width: 330px;
 }
+
+.w440 {
+	width: 440px;
+}
+
 .w50 {
 	width: 50px;
+}
+
+#form-content {
+	overflow: hidden;
+	display:block;
+	width: 1024px;
+}
+
+.right {
+	float: right;
+	width: 500px;
+}
+
+.left {
+	float: left;
+	width: 500px;
+}
+
+.clear {
+	clear: both;
 }
 
 #controlToggle input[type="radio"]{

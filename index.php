@@ -267,47 +267,50 @@ if(!isset($_POST["polyline"])) {
         </li>
         <li><a id="location"><i class="fa fa-compass" aria-hidden="true" title="Найти моё местоположение"></i></a></li>
     </ul>
-    <form id="form" name="alert" method="POST">
-		
-		
-		<input type="hidden" name="timezone_offset" id="timezone_offset" value="+03:00">
-		<input type="hidden" name="incident_id" value="">
-		<input type="hidden" name="name" value="Russian community">
-		<input type="hidden" name="length" value="0">
-		
-		
-		<p><textarea name="polyline" readonly="readonly">test</textarea><span id="length"></span></p>
-		<p><select name="direction" required>
-			<option value>Выберите направление</option>
-			<option value="ONE_DIRECTION">В одну сторону</option>
-			<option value="BOTH_DIRECTIONS">В обе стороны</option>
-		<select>
-		</p>
-		<p><select class="type" name="type" required>
-				<option value="">Выберите тип события</option>
-				<option value="CHIT_CHAT">Чат</option>
-				<option value="POLICE">Полиция</option>
-				<option value="JAM">Пробка</option>
-				<option value="ACCIDENT">Авария</option>
-				<option value="CONSTRUCTION">Ремонт</option>
-				<option value="HAZARD">Опасность</option>
-				<option value="ROAD_CLOSED">Перекрытие</option>
-			</select>
+    <div id="form-content">
+		<form id="form" name="alert" method="POST">
+			
+			
+			<input type="hidden" name="timezone_offset" id="timezone_offset" value="+03:00">
+			<input type="hidden" name="incident_id" value="">
+			<input type="hidden" name="name" value="Russian community">
+			<input type="hidden" name="length" value="0">
+			
+			
+			<p class="left"><textarea name="polyline" readonly="readonly">test</textarea><span id="length"></span></p>
+			<p class="right"><select name="direction" required>
+				<option value>Выберите направление</option>
+				<option value="ONE_DIRECTION">В одну сторону</option>
+				<option value="BOTH_DIRECTIONS">В обе стороны</option>
+			<select>
+			</p>
+			<p class="right"><select class="type" name="type" required>
+					<option value="">Выберите тип события</option>
+					<option value="CHIT_CHAT">Чат</option>
+					<option value="POLICE">Полиция</option>
+					<option value="JAM">Пробка</option>
+					<option value="ACCIDENT">Авария</option>
+					<option value="CONSTRUCTION">Ремонт</option>
+					<option value="HAZARD">Опасность</option>
+					<option value="ROAD_CLOSED">Перекрытие</option>
+				</select>
 
-			<select style="display:none" class="subtype" name="subtype">
-			</select>
-		</p>
-		<p><input type="text" id="starttime" name="starttime" placeholder="Дата начала" required> &mdash; <input type="text" id="endtime" name="endtime" placeholder="Дата окончания" required></p>
-		<p><textarea name="description" placeholder="Описание" required></textarea></p>
-		<p><textarea name="comment" placeholder="Комментарий (например, город)" required></textarea></p>
-		<p><input class="w330" type="text" name="street" placeholder="Улица" required/><input id="nostreet" type="checkbox"> Без названия</p>
-		<?php if ($user) { ?>
-			<p><input class="w330" type="text" name="author" value="<?php echo $user['user_login'];?>" readonly="readonly"/></p>
-		<?php } else { ?>
-			<p><input class="w330" type="text" name="author" placeholder="Ваш ник" required/></p>
-		<?php } ?>
-		<p><input class="w330" type="submit" value="Отправить" /></p>
-    </form>
+				<select style="display:none" class="subtype" name="subtype">
+				</select>
+			</p>
+			<p><input type="text" id="starttime" name="starttime" placeholder="Дата начала" required> &mdash; <input type="text" id="endtime" name="endtime" placeholder="Дата окончания" required></p>
+			<div class="clear"></div>
+			<p class="left"><textarea name="description" placeholder="Описание" required></textarea></p>
+			<p class="right"><textarea name="comment" placeholder="Комментарий (например, город)" required></textarea></p>
+			<p><input class="w330" type="text" name="street" placeholder="Улица" required/><input id="nostreet" type="checkbox"> Без названия</p>
+			<?php if ($user) { ?>
+				<p><input class="w330" type="text" name="author" value="<?php echo $user['user_login'];?>" readonly="readonly"/></p>
+			<?php } else { ?>
+				<p><input class="w3300" type="text" name="author" placeholder="Ваш ник" required/></p>
+			<?php } ?>
+			<p><input class="w330" type="submit" value="Отправить" /></p>
+		</form>
+	</div>
     <script type="text/javascript">
 		var POLICE = '<option value="POLICE_VISIBLE">Видимая полиция</option><option value="POLICE_HIDING">Скрытая засада полиции</option>';
 		var JAM = '<option value="JAM_LIGHT_TRAFFIC">Небольшая пробка</option><option value="JAM_MODERATE_TRAFFIC">Средняя пробка</option><option value="JAM_HEAVY_TRAFFIC">Стоим в пробке</option><option value="JAM_STAND_STILL_TRAFFIC">Полный тупик</option>';
