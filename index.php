@@ -101,6 +101,15 @@ if(!isset($_POST["polyline"])) {
                     //$('#length').html('Длина: ' + distance + ' м.');
                     $('input[name="length"]').val(40);
 					$('textarea[name="polyline"]').val(polyline.trim());
+					$.get( "get-street.php?lat="+xy0.y+"&lon="+xy0.x, function( data ) {
+						if( data == "" ) {
+							$('input[name="street"]').val("");
+							$('#nostreet').prop('checked', true);
+						}else{						
+							$('input[name="street"]').val(data);
+							$('#nostreet').prop('checked', false);
+						}
+					});
 					$('#form').show();
 					$.get( "json.php?lat="+xy0.y+"&lon="+xy0.x, function( data ) {
 					  $('#timezone_offset').val(data);
