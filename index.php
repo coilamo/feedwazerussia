@@ -277,7 +277,7 @@ if(!isset($_POST["polyline"])) {
 			<input type="hidden" name="length" value="0">
 			
 			
-			<p class="left"><textarea name="polyline" readonly="readonly">test</textarea><span id="length"></span></p>
+			<p class="left"><textarea name="polyline">test</textarea><span id="length"></span></p>
 			<p class="right"><select name="direction" required>
 				<option value>Выберите направление</option>
 				<option value="ONE_DIRECTION">В одну сторону</option>
