@@ -115,7 +115,7 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/
         var icon = new OpenLayers.Icon('http://rebelseed.com/wp-content/plugins/superstorefinder-wp/images/icons/youarehere.png',size,offset);
         
         <?php
-            $polyline = split(' ', $model->polyline);
+            $polyline = explode(' ', $model->polyline);
             if (count($polyline) >1)
             {
                 $lat = $polyline[0];
