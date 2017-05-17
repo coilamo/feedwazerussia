@@ -96,7 +96,7 @@ class FeedController extends Controller
             $model->mail_send = 1;
             $model->name = "Russian community";
             
-            $polyline = split(' ', $model->polyline);
+            $polyline = explode(' ', $model->polyline);
             if (count($polyline) < 4 || count($polyline) % 2 != 0)
             {
                 // Invalid polyline!
