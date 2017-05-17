@@ -331,6 +331,7 @@ if(!isset($_POST["polyline"])) {
 				$('select.subtype').html(ROAD_CLOSED);
 			} else {
 				$('select.subtype').hide();
+				$('select.subtype').html('');
 			}
 
 		});
