@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\FeedSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Feeds');
+$this->title = Yii::t('app', 'Reports');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="feed-index">
