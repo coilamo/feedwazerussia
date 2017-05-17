@@ -274,6 +274,7 @@ ul {
                 $('#feed-subtype').html(ROAD_CLOSED);
         } else {
                 $('#feed-subtype').hide();
+		$('#feed-subtype').html('');
         }
     });
     </script>
