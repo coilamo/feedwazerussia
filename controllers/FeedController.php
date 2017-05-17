@@ -97,7 +97,7 @@ class FeedController extends Controller
             $model->name = "Russian community";
             
             $polyline = explode(' ', $model->polyline);
-            if (count($polyline) < 4 || count($polyline) % 2 != 0)
+            if (count($polyline) < 2 || count($polyline) % 2 != 0)
             {
                 // Invalid polyline!
                 return $this->render('create', [
