@@ -122,6 +122,11 @@ class FeedController extends Controller
                 $model->starttime =  $model->starttime . "+" . gmdate("H:i", $obj->rawOffset);
             }
             $model->endtime  =  $model->endtime . "+" . gmdate("H:i", $obj->rawOffset);
+            
+            if (empty($model->street))
+            {
+                $model->street = 'No street';
+            }
 
             if ($model->save())
             {
