@@ -114,7 +114,7 @@ class FeedController extends Controller
             
             if (empty($model->starttime))
             {
-                $model->starttime = Yii::$app->formatter->asDate('now', 'yyyy-MM-DD') . 'T'
+                $model->starttime = Yii::$app->formatter->asDate('now', 'yyyy-MM-dd') . 'T'
                         .Yii::$app->formatter->asTime('now', 'HH:mm:ss') . '+00:00';
             }
             else
