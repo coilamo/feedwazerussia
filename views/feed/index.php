@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'layout' => "{summary}\n{pager}\n{items}\n{pager}",
         'rowOptions' => function ($model) {
             if (strtotime(date('Y-m-d\TH:i:s')) > strtotime($model->endtime))
             {
