@@ -41,6 +41,22 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/
                 'method' => 'post',
             ],
         ]) ?>
+        <?php
+            $polyline = explode(' ', $model->polyline);
+            if (!(count($polyline) < 2 || count($polyline) % 2 != 0))
+            {
+                $lat = $polyline[0];
+                $lon = $polyline[1];
+                echo Html::a(
+                    'Go to Live!',
+                    "https://www.waze.com/en/livemap?zoom=17&lat=" . $lat . "&lon=". $lon,
+                        [
+                            'class' => 'btn btn-info',
+                            'target' => '_blank'
+                        ]
+                );
+            }
+        ?>
     </p>
 
     <?= DetailView::widget([
