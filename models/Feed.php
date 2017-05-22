@@ -61,6 +61,7 @@ class Feed extends \yii\db\ActiveRecord
             [['type', 'direction'], 'string', 'min' => 1, 'max' => 32],
             [['description', 'location', 'polyline', 'street', 'reference', 'source', 'location_description', 'name', 'parent_event', 'schedule', 'short_description', 'subtype', 'url', 'comment'], 'string', 'max' => 256],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
+            ['polyline', 'validatePolyline'],
         ];
     }
 
@@ -113,5 +114,44 @@ class Feed extends \yii\db\ActiveRecord
     public function getAuthor()
     {
         return $this->hasOne(User::className(), ['id' => 'author_id']);
+    }
+    
+    public function validatePolyline($attribute, $params, $validator)
+    {
+        $polyline = explode(' ', $this->$attribute);
+        if (count($polyline) < 2 || count($polyline) % 2 != 0)
+        {
+            $this->addError($attribute, 'Polyline is incorrectly formatted.');
+        }
+        
+        if (count($polyline) > 3)
+        {
+            $lat1 = $polyline[0];
+            $lon1 = $polyline[1];
+            $lat2 = $polyline[2];
+            $lon2 = $polyline[3];
+            $distance = Feed::haversineGreatCircleDistance($lat1, $lon1, $lat2, $lon2);
+            if ($distance < 40)
+            {
+                $this->addError($attribute, 'Distance between points should be more than 40 meters (Currently is ' . $distance . 'm).');
+            }
+        }
+    }
+    
+    private static function haversineGreatCircleDistance(
+        $latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371000)
+    {
+        // convert from degrees to radians
+        $latFrom = deg2rad($latitudeFrom);
+        $lonFrom = deg2rad($longitudeFrom);
+        $latTo = deg2rad($latitudeTo);
+        $lonTo = deg2rad($longitudeTo);
+
+        $latDelta = $latTo - $latFrom;
+        $lonDelta = $lonTo - $lonFrom;
+
+        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+          cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+        return $angle * $earthRadius;
     }
 }
