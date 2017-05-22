@@ -63,6 +63,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'comment',
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{delete}'],
+            [
+                'label' => 'Live Map',
+                'format' => 'raw',
+                'value' => function($model){
+                    $polyline = explode(' ', $model->polyline);
+                    if (count($polyline) < 2 || count($polyline) % 2 != 0)
+                    {
+                        // Invalid polyline!
+                        return 'No link';
+                    }
+
+                    $lat = $polyline[0];
+                    $lon = $polyline[1];
+                    return Html::a(
+                        'Go to Live!',
+                        "https://www.waze.com/en/livemap?zoom=17&lat=" . $lat . "&lon=". $lon,
+                            [
+                                'class' => 'btn btn-info',
+                                'target' => '_blank'
+                            ]
+                    );
+                }
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
