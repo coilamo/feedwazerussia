@@ -67,6 +67,10 @@ ul {
             <label for="noneToggle"><i class="fa fa-hand-paper-o" aria-hidden="true" title="Перемещать карту"></i></label>
         </li>
         <li>
+            <input type="radio" name="type" value="point" id="pointToggle" onclick="toggleControl(this);" />
+            <label for="pointToggle"><i class="fa fa-map-marker" aria-hidden="true" title="Установите точку события"></i></label>
+        </li>
+        <li>
             <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
             <label for="lineToggle"><i class="fa fa-map-pin" aria-hidden="true" title="Установите точку события, а вторым кликом определите направление"></i></label>
         </li>
@@ -135,16 +139,25 @@ ul {
         });
         vectors.events.on({
             'featureselected': function(feature) {
-                // TODO: Feature selected
                 var polyline = "";
                 var xy0;
-                this.selectedFeatures[0].geometry.components.forEach (function(item, i, arr){
+                if (this.selectedFeatures[0].geometry.components === undefined) {
+                    // This is point
+                    item_transf = this.selectedFeatures[0].geometry.transform(toProjection,fromProjection);
+                    if(polyline === '') {
+                            xy0 = item_transf;
+                    }
+                    polyline = polyline + item_transf.y.toFixed(6) + ' ' + item_transf.x.toFixed(6) + ' ';
+                } else {
+                    // TODO: Feature selected
+                    this.selectedFeatures[0].geometry.components.forEach (function(item, i, arr){
                         item_transf = item.transform(toProjection,fromProjection);
                         if(polyline === '') {
                                 xy0 = item_transf;
                         }
                         polyline = polyline + item_transf.y.toFixed(6) + ' ' + item_transf.x.toFixed(6) + ' ';
-                });
+                    });
+                }
                 $('#feed-polyline').val(polyline.trim());
                 $.get( "<?= Url::to(['feed/getstreet']) ?>&lat="+xy0.y+"&lon="+xy0.x, function( data ) {
                         if( data == "" ) {
@@ -171,7 +184,18 @@ ul {
 
         drawControls = {
             point: new OpenLayers.Control.DrawFeature(
-                vectors, OpenLayers.Handler.Point
+                vectors, OpenLayers.Handler.Point,
+                {
+                    eventListeners: { "featureadded": function(feature) { 
+                                    $('label[for="selectToggle"]').click();
+                            }
+                    },
+                    handlerOptions: {
+                            //maxVertices: 2,
+                            //single: true,
+                            freehand: false,
+                    }
+                }
             ),
             line: new OpenLayers.Control.DrawFeature(
                 vectors, OpenLayers.Handler.Path,
