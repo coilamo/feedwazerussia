@@ -148,6 +148,8 @@ ul {
                             xy0 = item_transf;
                     }
                     polyline = polyline + item_transf.y.toFixed(6) + ' ' + item_transf.x.toFixed(6) + ' ';
+                    $('#feed-direction').val("BOTH_DIRECTIONS");
+                    $('#feed-direction').hide();
                 } else {
                     // TODO: Feature selected
                     this.selectedFeatures[0].geometry.components.forEach (function(item, i, arr){
@@ -157,6 +159,8 @@ ul {
                         }
                         polyline = polyline + item_transf.y.toFixed(6) + ' ' + item_transf.x.toFixed(6) + ' ';
                     });
+                    $('#feed-direction').val("");
+                    $('#feed-direction').show();
                 }
                 $('#feed-polyline').val(polyline.trim());
                 $.get( "<?= Url::to(['feed/getstreet']) ?>&lat="+xy0.y+"&lon="+xy0.x, function( data ) {
