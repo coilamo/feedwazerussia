@@ -41,8 +41,16 @@ use kartik\datetime\DateTimePicker;
         </span>
         <span style="float:right; width: 47%;">
             <?= $form->field($model, 'direction')->dropDownList([
-                'ONE_DIRECTION' => 'В одну сторону',
-                'BOTH_DIRECTIONS' => 'В обе стороны'], ['prompt' => 'Выберите направление', 'maxlength' => true, 'minlenght' => true]) ?>
+                        'BOTH_DIRECTIONS' => 'В обе стороны',
+                        'NORTH' => 'На север',
+                        'SOUTH' => 'На юг',
+                        'EAST' => 'На восток',
+                        'WEST' => 'На запад',
+                        'NORTH_WEST' => 'На северо-запад',
+                        'NORTH_EAST' => 'На северо-восток',
+                        'SOUTH_EAST' => 'На юго-восток',
+                        'SOUTH_WEST' => 'На юго-запад'],
+                    ['prompt' => 'Выберите направление', 'maxlength' => true, 'minlenght' => true]) ?>
             <?= $form->field($model, 'type')->dropDownList([
                 'CHIT_CHAT' => 'Чат',
                 'POLICE' => 'Полиция',
