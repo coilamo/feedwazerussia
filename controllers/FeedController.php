@@ -105,10 +105,6 @@ class FeedController extends Controller
                     'hide' => false
                 ]);
             }
-            else if (count($polyline) == 2)
-            {
-                $model->direction = "BOTH_DIRECTIONS";
-            }
 
             $lat = $polyline[0];
             $lon = $polyline[1];
