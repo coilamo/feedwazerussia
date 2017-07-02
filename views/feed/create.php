@@ -61,6 +61,10 @@ ul {
 <div class="feed-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <p>
+        Адрес:<input type="text" size="60" name="int_address" id="int_address" />
+        <input type="submit" value="Go!" onclick="showAddress($('#int_address').val());"/>
+    </p>
     <div id="map" class="smallmap"></div>
     <ul id="controlToggle">
         <li>
@@ -99,6 +103,7 @@ ul {
     
     <script>
     var map, drawControls;
+    var geocoder;
     var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984
             var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
             var extent = new OpenLayers.Bounds(-1.32,51.71,-1.18,51.80).transform(fromProjection,toProjection);
@@ -107,6 +112,7 @@ ul {
         bounds.extend(new OpenLayers.LonLat(-179, 85));
         bounds.extend(new OpenLayers.LonLat(179, -85));
 
+        geocoder = new google.maps.Geocoder();
         map = new OpenLayers.Map('map',
         {
             controls:[
@@ -165,7 +171,7 @@ ul {
                 }
                 $('#feed-polyline').val(polyline.trim());
                 $.get( "<?= Url::to(['feed/getstreet']) ?>&lat="+xy0.y+"&lon="+xy0.x, function( data ) {
-                        if( data == "" ) {
+                        if( data === "" ) {
                                 $('#feed-street').val("");
                         }else{						
                                 $('#feed-street').val(data);
@@ -210,7 +216,7 @@ ul {
                     handlerOptions: {
                             //maxVertices: 2,
                             //single: true,
-                            freehand: false,
+                            freehand: false
                     }
                 }
             ),
@@ -224,7 +230,7 @@ ul {
                     handlerOptions: {
                             //maxVertices: 2,
                             //single: true,
-                            freehand: false,
+                            freehand: false
                     }
                 }
             ),
@@ -318,5 +324,23 @@ ul {
 		$('#feed-subtype').html('');
         }
     });
+    
+    function showAddress(addr) {
+        if (geocoder) {
+            geocoder.geocode( {
+                address: addr,
+                componentRestrictions: {
+                    country: 'ru'
+                  }
+              },
+              function(results, status) {
+                if (status === 'OK') {
+                    var lat = results[0].geometry.location.lat();
+                    var lon = results[0].geometry.location.lng();
+                    map.setCenter(new OpenLayers.LonLat(lon, lat).transform(fromProjection, toProjection), map.getZoom());
+                }
+              });
+        }
+    }
     </script>
 </div>
