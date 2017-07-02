@@ -49,7 +49,8 @@ use kartik\datetime\DateTimePicker;
                         'NORTH_WEST' => 'На северо-запад',
                         'NORTH_EAST' => 'На северо-восток',
                         'SOUTH_EAST' => 'На юго-восток',
-                        'SOUTH_WEST' => 'На юго-запад'],
+                        'SOUTH_WEST' => 'На юго-запад',
+                        'ONE_DIRECTION' => 'В одну сторону'],
                     ['prompt' => 'Выберите направление', 'maxlength' => true, 'minlenght' => true]) ?>
             <?= $form->field($model, 'type')->dropDownList([
                 'CHIT_CHAT' => 'Чат',
