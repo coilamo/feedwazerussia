@@ -93,7 +93,7 @@ ul {
                 </li>
             </ul>
         </li>
-        <li><a id="location"><i class="fa fa-compass" aria-hidden="true" title="Найти моё местоположение"></i></a></li>
+        <li><a id="location"><i class="fa fa-compass" aria-hidden="true" title="Найти моё местоположение" onclick="locateMyPosition();"></i></a></li>
     </ul>
     
     <?= $this->render('_form', [
@@ -341,6 +341,16 @@ ul {
                 }
               });
         }
+    }
+    
+    function locateMyPosition() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+    }
+    
+    function showPosition(position) {
+        map.setCenter(new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude).transform(fromProjection, toProjection), map.getZoom());
     }
     </script>
 </div>
