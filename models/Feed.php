@@ -128,8 +128,8 @@ class Feed extends \yii\db\ActiveRecord
         {
             $lat1 = $polyline[0];
             $lon1 = $polyline[1];
-            $lat2 = $polyline[2];
-            $lon2 = $polyline[3];
+            $lat2 = $polyline[count($polyline) - 2];
+            $lon2 = $polyline[count($polyline) - 1];
             $distance = Feed::haversineGreatCircleDistance($lat1, $lon1, $lat2, $lon2);
             if ($distance < 40)
             {
