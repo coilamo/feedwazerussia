@@ -17,7 +17,7 @@ $this->registerCssFile('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/f
 $this->registerJsFile('https://code.jquery.com/jquery-1.12.4.min.js', ['position' => View::POS_HEAD]);
 $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js', ['position' => View::POS_HEAD]);
 $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/lib/OpenLayers.js', ['position' => View::POS_HEAD]);
-$this->registerJsFile('http://maps.google.com/maps/api/js?v=3&sensor=false&key=' . \Yii::$app->params['googleKey'], ['position' => View::POS_HEAD]);
+$this->registerJsFile('https://maps.google.com/maps/api/js?v=3&sensor=false&key=' . \Yii::$app->params['googleKey'], ['position' => View::POS_HEAD]);
 
 ?>
 
