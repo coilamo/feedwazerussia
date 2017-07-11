@@ -2,5 +2,5 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'googleKey' => '',
+    'googleKey' => 'AIzaSyAdYVxubmvBWv56Bs-Abd3Fz7iyqZdQkJo',
 ];
