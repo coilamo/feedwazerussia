@@ -7,7 +7,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\Feed */
 
-$this->title = Yii::t('app', 'Create Report');
+$this->title = Yii::t('app/feed', 'Create Report');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Reports'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -69,15 +69,15 @@ ul {
     <ul id="controlToggle">
         <li>
             <input type="radio" name="type" value="none" id="noneToggle" onclick="toggleControl(this);" checked="checked" />
-            <label for="noneToggle"><i class="fa fa-hand-paper-o" aria-hidden="true" title="Перемещать карту"></i></label>
+            <label for="noneToggle"><i class="fa fa-hand-paper-o" aria-hidden="true" title="<?= Yii::t('app/feed', 'Move the map'); ?>"></i></label>
         </li>
         <li>
             <input type="radio" name="type" value="point" id="pointToggle" onclick="toggleControl(this);" />
-            <label for="pointToggle"><i class="fa fa-map-marker" aria-hidden="true" title="Установите точку события"></i></label>
+            <label for="pointToggle"><i class="fa fa-map-marker" aria-hidden="true" title="<?= Yii::t('app/feed', 'Select the report point'); ?>"></i></label>
         </li>
         <li>
             <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
-            <label for="lineToggle"><i class="fa fa-map-pin" aria-hidden="true" title="Установите точку события, а вторым кликом определите направление"></i></label>
+            <label for="lineToggle"><i class="fa fa-map-pin" aria-hidden="true" title="<?= Yii::t('app/feed', 'Select the report point and direction by 2nd click'); ?>"></i></label>
         </li>
         <li>
             <input type="radio" name="type" value="select" id="selectToggle" onclick="toggleControl(this);" />
@@ -85,15 +85,15 @@ ul {
             <ul style="display: none;">
                 <li>
                     <input id="box" type="checkbox" checked="checked" name="box" onchange="update()" />
-                    <label for="box">select features in a box</label>
+                    <label for="box"><?= Yii::t('app/feed', 'Select features in a box'); ?></label>
                 </li>
                 <li>
                     <input id="clickout" type="checkbox" name="clickout" onchange="update()" />
-                    <label for="clickout">click out to unselect features</label>
+                    <label for="clickout"><?= Yii::t('app/feed', 'Click out to unselect features'); ?></label>
                 </li>
             </ul>
         </li>
-        <li><a id="location"><i class="fa fa-compass" aria-hidden="true" title="Найти моё местоположение" onclick="locateMyPosition();"></i></a></li>
+        <li><a id="location"><i class="fa fa-compass" aria-hidden="true" title="<?= Yii::t('app/feed', 'Locate my position'); ?>" onclick="locateMyPosition();"></i></a></li>
     </ul>
     
     <?= $this->render('_form', [
@@ -302,11 +302,11 @@ ul {
             init();
     });
     
-    var POLICE = '<option value="POLICE_VISIBLE">Видимая полиция</option><option value="POLICE_HIDING">Скрытая засада полиции</option>';
-    var JAM = '<option value="JAM_LIGHT_TRAFFIC">Небольшая пробка</option><option value="JAM_MODERATE_TRAFFIC">Средняя пробка</option><option value="JAM_HEAVY_TRAFFIC">Стоим в пробке</option><option value="JAM_STAND_STILL_TRAFFIC">Полный тупик</option>';
-    var ACCIDENT = '<option value="ACCIDENT_MINOR">Мелкая авария</option><option value="ACCIDENT_MAJOR">Крупная авария</option>';
-    var HAZARD = '<option value="HAZARD_ON_ROAD">Опасность на дороге</option><option value="HAZARD_ON_ROAD_CAR_STOPPED">Автомобиль остановился на дороге</option><option value="HAZARD_ON_ROAD_CONSTRUCTION">Ремонт</option><option value="HAZARD_ON_ROAD_OBJECT">Препятсвие</option><option value="HAZARD_ON_ROAD_POT_HOLE">Яма</option><option value="HAZARD_ON_ROAD_ROAD_KILL">Сбитое животное</option><option value="HAZARD_ON_SHOULDER">Опасность на обочине</option><option value="HAZARD_ON_SHOULDER_ANIMALS">Животное на обочине</option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED">Стоит машина на обочине</option><option value="HAZARD_WEATHER">Плохая погода</option><option value="HAZARD_ON_SHOULDER_MISSING_SIGN">Отсутствует знак</option><option value="HAZARD_WEATHER_FOG">Туман</option><option value="HAZARD_WEATHER_HAIL">Град</option><option value="HAZARD_WEATHER_HEAVY_RAIN">Ливень</option><option value="HAZARD_WEATHER_HEAVY_SNOW">Сильный снегопад</option><option value="HAZARD_WEATHER_FLOOD">Наводнение</option><option value="HAZARD_WEATHER_MONSOON">Муссон</option><option value="HAZARD_WEATHER_TORNADO">Торнадо</option><option value="HAZARD_WEATHER_HEAT_WAVE">Сильная жара</option><option value="HAZARD_WEATHER_HURRICANE">Ураган</option><option value="HAZARD_WEATHER_FREEZING_RAIN">Ледяной дождь</option><option value="HAZARD_ON_ROAD_LANE_CLOSED">Закрыта полоса</option><option value="HAZARD_ON_ROAD_OIL">Пролито масло</option><option value="HAZARD_ON_ROAD_ICE">Гололёд</option><option value="HAZARD_ON_ROAD_TRAFFIC_LIGHT_FAULT">Неисправный светофор</option>';
-    var ROAD_CLOSED = '<option value="ROAD_CLOSED_CONSTRUCTION">Ремонт</option><option value="ROAD_CLOSED_EVENT">Мероприятие</option><option value="ROAD_CLOSED_HAZARD">Опасность</option>';
+    var POLICE = '<option value="POLICE_VISIBLE"><?= Yii::t('app/feed', 'Visible police'); ?></option><option value="POLICE_HIDING"><?= Yii::t('app/feed', 'Hidden police'); ?></option>';
+    var JAM = '<option value="JAM_LIGHT_TRAFFIC"><?= Yii::t('app/feed', 'Light traffic'); ?></option><option value="JAM_MODERATE_TRAFFIC"><?= Yii::t('app/feed', 'Moderate traffic'); ?></option><option value="JAM_HEAVY_TRAFFIC"><?= Yii::t('app/feed', 'Heavy traffic'); ?></option><option value="JAM_STAND_STILL_TRAFFIC"><?= Yii::t('app/feed', 'Stand still traffic'); ?></option>';
+    var ACCIDENT = '<option value="ACCIDENT_MINOR"><?= Yii::t('app/feed', 'Minor accident'); ?></option><option value="ACCIDENT_MAJOR"><?= Yii::t('app/feed', 'Major accident'); ?></option>';
+    var HAZARD = '<option value="HAZARD_ON_ROAD"><?= Yii::t('app/feed', 'Hazard on road'); ?></option><option value="HAZARD_ON_ROAD_CAR_STOPPED"><?= Yii::t('app/feed', 'Car stopped on road'); ?></option><option value="HAZARD_ON_ROAD_CONSTRUCTION"><?= Yii::t('app/feed', 'Construction'); ?></option><option value="HAZARD_ON_ROAD_OBJECT"><?= Yii::t('app/feed', 'Object'); ?></option><option value="HAZARD_ON_ROAD_POT_HOLE"><?= Yii::t('app/feed', 'Pot hole'); ?></option><option value="HAZARD_ON_ROAD_ROAD_KILL"><?= Yii::t('app/feed', 'Road kill'); ?></option><option value="HAZARD_ON_SHOULDER"><?= Yii::t('app/feed', 'Hazard on shoulder'); ?></option><option value="HAZARD_ON_SHOULDER_ANIMALS"><?= Yii::t('app/feed', 'Animals on shoulder'); ?></option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED"><?= Yii::t('app/feed', 'Car stopped on shoulder'); ?></option><option value="HAZARD_WEATHER"><?= Yii::t('app/feed', 'Hazard weather'); ?></option><option value="HAZARD_ON_SHOULDER_MISSING_SIGN"><?= Yii::t('app/feed', 'Missing sign'); ?></option><option value="HAZARD_WEATHER_FOG"><?= Yii::t('app/feed', 'Fog'); ?></option><option value="HAZARD_WEATHER_HAIL"><?= Yii::t('app/feed', 'Hail'); ?></option><option value="HAZARD_WEATHER_HEAVY_RAIN"><?= Yii::t('app/feed', 'Heavy rain'); ?></option><option value="HAZARD_WEATHER_HEAVY_SNOW"><?= Yii::t('app/feed', 'Heavy snow'); ?></option><option value="HAZARD_WEATHER_FLOOD"><?= Yii::t('app/feed', 'Flood'); ?></option><option value="HAZARD_WEATHER_MONSOON"><?= Yii::t('app/feed', 'Monson'); ?></option><option value="HAZARD_WEATHER_TORNADO"><?= Yii::t('app/feed', 'Tornado'); ?></option><option value="HAZARD_WEATHER_HEAT_WAVE"><?= Yii::t('app/feed', 'Heat wave'); ?></option><option value="HAZARD_WEATHER_HURRICANE"><?= Yii::t('app/feed', 'Hurricane'); ?></option><option value="HAZARD_WEATHER_FREEZING_RAIN"><?= Yii::t('app/feed', 'Freezing rain'); ?></option><option value="HAZARD_ON_ROAD_LANE_CLOSED"><?= Yii::t('app/feed', 'Lane closed'); ?></option><option value="HAZARD_ON_ROAD_OIL"><?= Yii::t('app/feed', 'Oil on road'); ?></option><option value="HAZARD_ON_ROAD_ICE"><?= Yii::t('app/feed', 'Ice'); ?></option><option value="HAZARD_ON_ROAD_TRAFFIC_LIGHT_FAULT"><?= Yii::t('app/feed', 'Traffic light fault'); ?></option>';
+    var ROAD_CLOSED = '<option value="ROAD_CLOSED_CONSTRUCTION"><?= Yii::t('app/feed', 'Construction'); ?></option><option value="ROAD_CLOSED_EVENT"><?= Yii::t('app/feed', 'Event'); ?></option><option value="ROAD_CLOSED_HAZARD"><?= Yii::t('app/feed', 'Hazard'); ?></option>';
     $('#feed-type').change(function(){
         $('#feed-subtype').show();
         if($(this).val() === 'HAZARD') {

@@ -71,33 +71,33 @@ class Feed extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'incident_id' => Yii::t('app', 'Incident ID'),
-            'description' => Yii::t('app', 'Description'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'incident' => Yii::t('app', 'Incident'),
-            'incidents' => Yii::t('app', 'Incidents'),
-            'location' => Yii::t('app', 'Location'),
-            'polyline' => Yii::t('app', 'Polyline'),
-            'starttime' => Yii::t('app', 'Start time'),
-            'endtime' => Yii::t('app', 'End time'),
-            'street' => Yii::t('app', 'Street'),
-            'type' => Yii::t('app', 'Type'),
-            'direction' => Yii::t('app', 'Direction'),
-            'author_id' => Yii::t('app', 'Author ID'),
-            'reference' => Yii::t('app', 'Reference'),
-            'source' => Yii::t('app', 'Source'),
-            'location_description' => Yii::t('app', 'Location Description'),
-            'name' => Yii::t('app', 'Name'),
-            'parent_event' => Yii::t('app', 'Parent Event'),
-            'schedule' => Yii::t('app', 'Schedule'),
-            'short_description' => Yii::t('app', 'Short Description'),
-            'subtype' => Yii::t('app', 'Subtype'),
-            'url' => Yii::t('app', 'Url'),
-            'active' => Yii::t('app', 'Active'),
-            'mail_send' => Yii::t('app', 'Mail Send'),
-            'comment' => Yii::t('app', 'Comment'),
+            'id' => Yii::t('app/feed', 'ID'),
+            'incident_id' => Yii::t('app/feed', 'Incident ID'),
+            'description' => Yii::t('app/feed', 'Description'),
+            'created_at' => Yii::t('app/feed', 'Created At'),
+            'updated_at' => Yii::t('app/feed', 'Updated At'),
+            'incident' => Yii::t('app/feed', 'Incident'),
+            'incidents' => Yii::t('app/feed', 'Incidents'),
+            'location' => Yii::t('app/feed', 'Location'),
+            'polyline' => Yii::t('app/feed', 'Polyline'),
+            'starttime' => Yii::t('app/feed', 'Start time'),
+            'endtime' => Yii::t('app/feed', 'End time'),
+            'street' => Yii::t('app/feed', 'Street'),
+            'type' => Yii::t('app/feed', 'Type'),
+            'direction' => Yii::t('app/feed', 'Direction'),
+            'author_id' => Yii::t('app/feed', 'Author ID'),
+            'reference' => Yii::t('app/feed', 'Reference'),
+            'source' => Yii::t('app/feed', 'Source'),
+            'location_description' => Yii::t('app/feed', 'Location Description'),
+            'name' => Yii::t('app/feed', 'Name'),
+            'parent_event' => Yii::t('app/feed', 'Parent Event'),
+            'schedule' => Yii::t('app/feed', 'Schedule'),
+            'short_description' => Yii::t('app/feed', 'Short Description'),
+            'subtype' => Yii::t('app/feed', 'Subtype'),
+            'url' => Yii::t('app/feed', 'Url'),
+            'active' => Yii::t('app/feed', 'Active'),
+            'mail_send' => Yii::t('app/feed', 'Mail Send'),
+            'comment' => Yii::t('app/feed', 'Comment'),
         ];
     }
     
@@ -121,7 +121,7 @@ class Feed extends \yii\db\ActiveRecord
         $polyline = explode(' ', $this->$attribute);
         if (count($polyline) < 2 || count($polyline) % 2 != 0)
         {
-            $this->addError($attribute, 'Polyline is incorrectly formatted.');
+            $this->addError($attribute, Yii::t('app/feed', 'Polyline is incorrectly formatted.'));
         }
         
         if (count($polyline) > 3)
@@ -133,7 +133,10 @@ class Feed extends \yii\db\ActiveRecord
             $distance = Feed::haversineGreatCircleDistance($lat1, $lon1, $lat2, $lon2);
             if ($distance < 40)
             {
-                $this->addError($attribute, 'Distance between points should be more than 40 meters (Currently is ' . $distance . 'm).');
+                $this->addError($attribute,
+                        Yii::t('app/feed',
+                        'Distance between points should be more than 40 meters (Currently {distance, plural, =0{are # meters} =1{is 1 meter} other{are # meters}}!).',
+                                ['distance' => $distance]));
             }
         }
     }
