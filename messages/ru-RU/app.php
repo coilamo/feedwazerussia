@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Language' => 'Язык (Language)',
     'Create' => 'Создать',
     'Create Report' => 'Создать отчет',
     'Login' => 'Войти',
