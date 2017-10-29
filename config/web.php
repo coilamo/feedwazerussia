@@ -6,6 +6,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'ru-RU',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -38,14 +39,31 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
+        
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                ],
+            ],
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'class'=>'app\components\LangUrlManager',
+            'baseUrl' => '/waze_feed/web/',
+            'rules'=>[
+                '/' => 'site/index',
+                '<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
+            ]
         ],
-        */
+        'request' => [
+            'class' => 'app\components\LangRequest',
+            'enableCookieValidation' => true,
+            'enableCsrfValidation' => true,
+            'cookieValidationKey' => 'xxxxxxx',
+        ],
     ],
     'timeZone' => 'UTC',
     'params' => $params,

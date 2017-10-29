@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Feed */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Reports'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/feed', 'Reports'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/theme/default/style.css', ['position' => View::POS_HEAD]);
@@ -34,10 +34,10 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/
 
     <p>
         <?php // Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('app/feed', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('app/feed', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -48,7 +48,7 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/
                 $lat = $polyline[0];
                 $lon = $polyline[1];
                 echo Html::a(
-                    'Go to Live!',
+                    Yii::t('app/feed', 'Go to Live!'),
                     "https://www.waze.com/en/livemap?zoom=17&lat=" . $lat . "&lon=". $lon,
                         [
                             'class' => 'btn btn-info',

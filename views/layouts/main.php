@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\widgets\WLang;
 
 AppAsset::register($this);
 ?>
@@ -27,7 +28,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Waze Feed Russia',
+        'brandLabel' => Yii::t('app', 'Waze Feed Russia'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -37,22 +38,29 @@ AppAsset::register($this);
     /*$menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
     ];*/
-
+    
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
     } else {
-        $menuItems[] = ['label' => 'Reports', 'url' => ['/feed/index']];
-		$menuItems[] = ['label' => 'Create Report', 'url' => ['/feed/create'], ['class' => 'btn btn-success']];
+        $menuItems[] = ['label' => Yii::t('app', 'Reports'), 'url' => ['/feed/index']];
+	$menuItems[] = ['label' => Yii::t('app', 'Create Report'), 'url' => ['/feed/create'], ['class' => 'btn btn-success']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                Yii::t('app', 'Logout ({username})',
+                        [
+                            'username' => Yii::$app->user->identity->username
+                        ]),
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
             . '</li>';
     }
+    
+    $menuItems[] = '<li>'
+            . WLang::widget()
+            . '</li>';
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

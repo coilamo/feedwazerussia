@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\FeedSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Reports');
+$this->title = Yii::t('app/feed', 'Reports');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="feed-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Report'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app/feed', 'Create Report'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $lat = $polyline[0];
                     $lon = $polyline[1];
                     return Html::a(
-                        'Go to Live!',
+                        Yii::t('app/feed', 'Go to Live!'),
                         "https://www.waze.com/en/livemap?zoom=17&lat=" . $lat . "&lon=". $lon,
                             [
                                 'class' => 'btn btn-info',

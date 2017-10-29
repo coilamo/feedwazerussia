@@ -22,7 +22,7 @@ use kartik\datetime\DateTimePicker;
         <span style="float:left; width: 47%;">
             <?= $form->field($model, 'polyline')->textarea(['maxlength' => true, 'rows' => 2]) ?>
             <?= $form->field($model, 'starttime')->widget(DateTimePicker::classname(), [
-                    'options' => ['placeholder' => 'Enter event start time ...'],
+                    'options' => ['placeholder' => Yii::t('app/feed', 'Enter event start time ...')],
                     'type' => DateTimePicker::TYPE_INPUT,
                     'pluginOptions' => [
                         'autoclose' => true,
@@ -30,7 +30,7 @@ use kartik\datetime\DateTimePicker;
                     ]
                 ]) ?>
             <?= $form->field($model, 'endtime')->widget(DateTimePicker::classname(), [
-                    'options' => ['placeholder' => 'Enter event end time ...'],
+                    'options' => ['placeholder' => Yii::t('app/feed', 'Enter event end time ...')],
                     'type' => DateTimePicker::TYPE_INPUT,
                     'pluginOptions' => [
                         'autoclose' => true,
@@ -41,26 +41,26 @@ use kartik\datetime\DateTimePicker;
         </span>
         <span style="float:right; width: 47%;">
             <?= $form->field($model, 'direction')->dropDownList([
-                        'BOTH_DIRECTIONS' => 'В обе стороны',
-                        'NORTH' => 'На север',
-                        'SOUTH' => 'На юг',
-                        'EAST' => 'На восток',
-                        'WEST' => 'На запад',
-                        'NORTH_WEST' => 'На северо-запад',
-                        'NORTH_EAST' => 'На северо-восток',
-                        'SOUTH_EAST' => 'На юго-восток',
-                        'SOUTH_WEST' => 'На юго-запад',
-                        'ONE_DIRECTION' => 'В одну сторону'],
-                    ['prompt' => 'Выберите направление', 'maxlength' => true, 'minlenght' => true]) ?>
+                        'BOTH_DIRECTIONS' => Yii::t('app/feed', 'Both directions'),
+                        'NORTH' => Yii::t('app/feed', 'To North'),
+                        'SOUTH' => Yii::t('app/feed', 'To South'),
+                        'EAST' => Yii::t('app/feed', 'To East'),
+                        'WEST' => Yii::t('app/feed', 'To West'),
+                        'NORTH_WEST' => Yii::t('app/feed', 'To North-West'),
+                        'NORTH_EAST' => Yii::t('app/feed', 'To North-East'),
+                        'SOUTH_EAST' => Yii::t('app/feed', 'To South-East'),
+                        'SOUTH_WEST' => Yii::t('app/feed', 'To South-West'),
+                        'ONE_DIRECTION' => Yii::t('app/feed', 'One direction')],
+                    ['prompt' => Yii::t('app/feed', 'Select direction'), 'maxlength' => true, 'minlenght' => true]) ?>
             <?= $form->field($model, 'type')->dropDownList([
-                'CHIT_CHAT' => 'Чат',
-                'POLICE' => 'Полиция',
-                'JAM' => 'Пробка',
-                'ACCIDENT' => 'Авария',
-                'CONSTRUCTION' => 'Ремонт',
-                'HAZARD' => 'Опасность',
-                'ROAD_CLOSED' => 'Перекрытие',
-                ], ['prompt' => 'Выберите тип события', 'maxlength' => true, 'minlenght' => true]) ?>
+                'CHIT_CHAT' => Yii::t('app/feed', 'Chat'),
+                'POLICE' => Yii::t('app/feed', 'Police'),
+                'JAM' => Yii::t('app/feed', 'Traffic'),
+                'ACCIDENT' => Yii::t('app/feed', 'Crash'),
+                'CONSTRUCTION' => Yii::t('app/feed', 'Road works'),
+                'HAZARD' => Yii::t('app/feed', 'Hazard'),
+                'ROAD_CLOSED' => Yii::t('app/feed', 'Closure'),
+                ], ['prompt' => Yii::t('app/feed', 'Select event type'), 'maxlength' => true, 'minlenght' => true]) ?>
             <?= $form->field($model, 'subtype')->dropDownList([], ['style' => 'display: none']) ?>
         </span>
     </div>
