@@ -52,7 +52,6 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'class'=>'app\components\LangUrlManager',
-            'baseUrl' => '/waze_feed/web/',
             'rules'=>[
                 '/' => 'site/index',
                 '<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
