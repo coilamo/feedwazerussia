@@ -170,7 +170,7 @@ ul {
                     //$('#feed-direction').show();
                 }
                 $('#feed-polyline').val(polyline.trim());
-                $.get( "<?= Url::to(['feed/getstreet']) ?>&lat="+xy0.y+"&lon="+xy0.x, function( data ) {
+                $.get( "<?= Url::to(['feed/getstreet']) ?>?lat="+xy0.y+"&lon="+xy0.x, function( data ) {
                         if( data === "" ) {
                                 $('#feed-street').val("");
                         }else{						
