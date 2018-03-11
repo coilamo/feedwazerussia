@@ -17,6 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Days to extend:' => 'Zile de prelungire:',
+    'Extend' => 'Extinde',
     'Active' => 'Activ',
     'Animals on shoulder' => 'Cadavru animal',
     'Are you sure you want to delete this item?' => 'Sunteți siguri că doriți ștergerea acestei înregistrări',

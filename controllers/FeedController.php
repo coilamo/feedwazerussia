@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use DateInterval;
+use DateTime;
 use Yii;
 use app\models\Feed;
 use app\models\FeedSearch;
@@ -23,11 +25,11 @@ class FeedController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create', 'delete', 'getstreet'],
+                'only' => ['index', 'view', 'create', 'delete', 'getstreet', 'extend'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'delete', 'getstreet'],
+                        'actions' => ['index', 'view', 'create', 'delete', 'getstreet', 'extend'],
                         'roles' => ['?'],
                     ],
                 ],
@@ -205,5 +207,21 @@ class FeedController extends Controller
             $name=$data['result'][0]['names'][0];
             echo trim($name);
         }
+    }
+
+    public function actionExtend($id)
+    {
+        $request = Yii::$app->request;
+        $days = $request->post('days');
+
+        $model = $this->findModel($id);
+        if ($days > 0) {
+            $enddate = new DateTime($model->endtime);
+            $enddate->add(new DateInterval('P'.intval($days).'D'));
+            $model->endtime = $enddate->format('c');
+            var_dump($model->endtime);
+            $model->update();
+        }
+        return $this->redirect(['view', 'id' => $id]);
     }
 }

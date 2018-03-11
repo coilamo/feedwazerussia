@@ -17,6 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Days to extend:' => 'Продлить (в днях):',
+    'Extend' => 'Продлить',
     'Active' => 'Активен',
     'Animals on shoulder' => 'Животные на обочине',
     'Are you sure you want to delete this item?' => 'Вы уверены что хотите удалить эту запись?',
