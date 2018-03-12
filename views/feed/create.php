@@ -173,16 +173,13 @@ ul {
                 $.get( "<?= Url::to(['feed/getstreet']) ?>?lat="+xy0.y+"&lon="+xy0.x, function( data ) {
                         if( data === "" ) {
                                 $('#feed-street').val("");
-                        }else{						
+                        }else{
                                 $('#feed-street').val(data);
                         }
                 });
                 $('#feed-form').show();
 
-                var size = new OpenLayers.Size(24,24);
-                var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-                var icon = new OpenLayers.Icon('https://individual.icons-land.com/IconsPreview/MapMarkers/PNG/Centered/24x24/MapMarker_Flag4_Right_Pink.png', size, offset);
-                markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(xy0.x,xy0.y).transform(fromProjection,toProjection),icon));
+                showMarker(markers, xy0.x,xy0.y);
 
             },
             'featureunselected': function(feature) {
@@ -273,6 +270,40 @@ ul {
         var map_zoom = (Cookies.get("fwr_zoom") === undefined) ?  7 : Cookies.get("fwr_zoom");
         map.setCenter(new OpenLayers.LonLat(map_lon, map_lat).transform(fromProjection,toProjection), map_zoom); // 0=relative zoom level 
 
+        <?php
+        if ($model->type != null && $model->subtype != null) {
+        ?>
+        toggleFeedType();
+        $('#feed-subtype').val('<?= $model->subtype; ?>').change();
+        <?php
+        }
+
+        if ($model->polyline != null) {
+            $coords = explode(" ", $model->polyline);
+            if (count($coords) > 1) {
+                echo 'showMarker(markers, ' . $coords[count($coords) - 1] . ', ' . $coords[count($coords) - 2] . ');';
+                echo 'map.setCenter(new OpenLayers.LonLat(' . $coords[count($coords) - 1] . ', ' . $coords[count($coords) - 2] . ').transform(fromProjection, toProjection), map.getZoom());';
+            }
+            if (count($coords) > 2 && count($coords) % 2 == 0) {
+                echo 'var points = new OpenLayers.Geometry.LineString( [';
+                for ($i = 0; $i < count($coords) / 2; $i++) {
+                    echo 'new OpenLayers.Geometry.Point('.$coords[$i * 2 + 1] . ', ' . $coords[$i * 2].').transform(fromProjection,toProjection),';
+                }
+                ?>
+                ]);
+                var linefeature = new OpenLayers.Feature.Vector(points);
+                vectors.addFeatures( [linefeature] );
+        <?php
+            }
+        }
+        ?>
+    }
+
+    function showMarker(markers, x, y) {
+        var size = new OpenLayers.Size(24,24);
+        var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+        var icon = new OpenLayers.Icon('https://individual.icons-land.com/IconsPreview/MapMarkers/PNG/Centered/24x24/MapMarker_Flag4_Right_Pink.png', size, offset);
+        markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(x,y).transform(fromProjection,toProjection),icon));
     }
     function toggleControl(element) {
         for(key in drawControls) {
@@ -307,23 +338,25 @@ ul {
     var ACCIDENT = '<option value="ACCIDENT_MINOR"><?= Yii::t('app/feed', 'Minor accident'); ?></option><option value="ACCIDENT_MAJOR"><?= Yii::t('app/feed', 'Major accident'); ?></option>';
     var HAZARD = '<option value="HAZARD_ON_ROAD"><?= Yii::t('app/feed', 'Hazard on road'); ?></option><option value="HAZARD_ON_ROAD_CAR_STOPPED"><?= Yii::t('app/feed', 'Car stopped on road'); ?></option><option value="HAZARD_ON_ROAD_CONSTRUCTION"><?= Yii::t('app/feed', 'Construction'); ?></option><option value="HAZARD_ON_ROAD_OBJECT"><?= Yii::t('app/feed', 'Object'); ?></option><option value="HAZARD_ON_ROAD_POT_HOLE"><?= Yii::t('app/feed', 'Pot hole'); ?></option><option value="HAZARD_ON_ROAD_ROAD_KILL"><?= Yii::t('app/feed', 'Road kill'); ?></option><option value="HAZARD_ON_SHOULDER"><?= Yii::t('app/feed', 'Hazard on shoulder'); ?></option><option value="HAZARD_ON_SHOULDER_ANIMALS"><?= Yii::t('app/feed', 'Animals on shoulder'); ?></option><option value="HAZARD_ON_SHOULDER_CAR_STOPPED"><?= Yii::t('app/feed', 'Car stopped on shoulder'); ?></option><option value="HAZARD_WEATHER"><?= Yii::t('app/feed', 'Hazard weather'); ?></option><option value="HAZARD_ON_SHOULDER_MISSING_SIGN"><?= Yii::t('app/feed', 'Missing sign'); ?></option><option value="HAZARD_WEATHER_FOG"><?= Yii::t('app/feed', 'Fog'); ?></option><option value="HAZARD_WEATHER_HAIL"><?= Yii::t('app/feed', 'Hail'); ?></option><option value="HAZARD_WEATHER_HEAVY_RAIN"><?= Yii::t('app/feed', 'Heavy rain'); ?></option><option value="HAZARD_WEATHER_HEAVY_SNOW"><?= Yii::t('app/feed', 'Heavy snow'); ?></option><option value="HAZARD_WEATHER_FLOOD"><?= Yii::t('app/feed', 'Flood'); ?></option><option value="HAZARD_WEATHER_MONSOON"><?= Yii::t('app/feed', 'Monson'); ?></option><option value="HAZARD_WEATHER_TORNADO"><?= Yii::t('app/feed', 'Tornado'); ?></option><option value="HAZARD_WEATHER_HEAT_WAVE"><?= Yii::t('app/feed', 'Heat wave'); ?></option><option value="HAZARD_WEATHER_HURRICANE"><?= Yii::t('app/feed', 'Hurricane'); ?></option><option value="HAZARD_WEATHER_FREEZING_RAIN"><?= Yii::t('app/feed', 'Freezing rain'); ?></option><option value="HAZARD_ON_ROAD_LANE_CLOSED"><?= Yii::t('app/feed', 'Lane closed'); ?></option><option value="HAZARD_ON_ROAD_OIL"><?= Yii::t('app/feed', 'Oil on road'); ?></option><option value="HAZARD_ON_ROAD_ICE"><?= Yii::t('app/feed', 'Ice'); ?></option><option value="HAZARD_ON_ROAD_TRAFFIC_LIGHT_FAULT"><?= Yii::t('app/feed', 'Traffic light fault'); ?></option>';
     var ROAD_CLOSED = '<option value="ROAD_CLOSED_CONSTRUCTION"><?= Yii::t('app/feed', 'Construction'); ?></option><option value="ROAD_CLOSED_EVENT"><?= Yii::t('app/feed', 'Event'); ?></option><option value="ROAD_CLOSED_HAZARD"><?= Yii::t('app/feed', 'Hazard'); ?></option>';
-    $('#feed-type').change(function(){
+    $('#feed-type').change(toggleFeedType);
+
+    function toggleFeedType() {
         $('#feed-subtype').show();
-        if($(this).val() === 'HAZARD') {
-                $('#feed-subtype').html(HAZARD);
-        } else if($(this).val() === 'POLICE') {
-                $('#feed-subtype').html(POLICE);
-        } else if($(this).val() === 'JAM') {
-                $('#feed-subtype').html(JAM);
-        } else if($(this).val() === 'ACCIDENT') {
-                $('#feed-subtype').html(ACCIDENT);
-        } else if($(this).val() === 'ROAD_CLOSED') {
-                $('#feed-subtype').html(ROAD_CLOSED);
+        if($('#feed-type').val() === 'HAZARD') {
+            $('#feed-subtype').html(HAZARD);
+        } else if($('#feed-type').val() === 'POLICE') {
+            $('#feed-subtype').html(POLICE);
+        } else if($('#feed-type').val() === 'JAM') {
+            $('#feed-subtype').html(JAM);
+        } else if($('#feed-type').val() === 'ACCIDENT') {
+            $('#feed-subtype').html(ACCIDENT);
+        } else if($('#feed-type').val() === 'ROAD_CLOSED') {
+            $('#feed-subtype').html(ROAD_CLOSED);
         } else {
-                $('#feed-subtype').hide();
-		$('#feed-subtype').html('');
+            $('#feed-subtype').hide();
+            $('#feed-subtype').html('');
         }
-    });
+    }
     
     function showAddress(addr) {
         if (geocoder) {
