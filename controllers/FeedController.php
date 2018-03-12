@@ -231,6 +231,13 @@ class FeedController extends Controller
         $model->id = null;
         $model->incident_id = null;
         $model->isNewRecord = true;
+
+        $endtime = new DateTime($model->endtime);
+        $model->endtime = $endtime->format('Y-m-d\TH:i:s');
+
+        $starttime = new DateTime($model->starttime);
+        $model->starttime = $starttime->format('Y-m-d\TH:i:s');
+
         return $this->render('create', [
             'model' => $model,
             'hide' => false
