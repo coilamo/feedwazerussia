@@ -17,8 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Days to extend:' => 'Продлить (в днях):',
-    'Extend' => 'Продлить',
+    'Clone' => 'Клонировать',
     'Active' => 'Активен',
     'Animals on shoulder' => 'Животные на обочине',
     'Are you sure you want to delete this item?' => 'Вы уверены что хотите удалить эту запись?',
@@ -34,6 +33,7 @@ return [
     'Crash' => 'Авария',
     'Create Report' => 'Создать отчет',
     'Created At' => 'Создан в',
+    'Days to extend:' => 'Продлить (в днях):',
     'Delete' => 'Удалить',
     'Description' => 'Описание',
     'Direction' => 'Направление',
@@ -42,6 +42,7 @@ return [
     'Enter event end time ...' => 'Введите время окончания события ...',
     'Enter event start time ...' => 'Введите время начала события ...',
     'Event' => 'Событие',
+    'Extend' => 'Продлить',
     'Flood' => 'Наводнение',
     'Fog' => 'Туман',
     'Freezing rain' => 'Переохлажденный дождь',

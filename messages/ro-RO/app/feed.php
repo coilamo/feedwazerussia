@@ -17,8 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Days to extend:' => 'Zile de prelungire:',
-    'Extend' => 'Extinde',
+    'Clone' => 'Clone',
     'Active' => 'Activ',
     'Animals on shoulder' => 'Cadavru animal',
     'Are you sure you want to delete this item?' => 'Sunteți siguri că doriți ștergerea acestei înregistrări',
@@ -34,6 +33,7 @@ return [
     'Crash' => 'Accident',
     'Create Report' => 'Creează raport',
     'Created At' => 'Creat la',
+    'Days to extend:' => 'Zile de prelungire:',
     'Delete' => 'Șterge',
     'Description' => 'Descriere',
     'Direction' => 'Direcție',
@@ -42,6 +42,7 @@ return [
     'Enter event end time ...' => 'Introd sfârșitul evenimentului ...',
     'Enter event start time ...' => 'Introdu începutul evenimentului ...',
     'Event' => 'Eveniment',
+    'Extend' => 'Extinde',
     'Flood' => 'Inundație',
     'Fog' => 'Ceață densă',
     'Freezing rain' => 'Gheață pe drum',
