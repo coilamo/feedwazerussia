@@ -57,6 +57,12 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/
                 );
             }
         ?>
+        <?= Html::a(Yii::t('app/feed', 'Clone'), ['clone', 'id' => $model->id], [
+            'class' => 'btn btn-warning',
+            'data' => [
+                'method' => 'post',
+            ],
+        ]) ?>
         <?= Html::beginForm(['extend', 'id' => $model->id], 'post', [ 'class' => "form-inline"]); ?>
     <div class="form-group">
         <label for="days"><?= Yii::t('app/feed', 'Days to extend:'); ?></label>

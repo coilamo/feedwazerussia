@@ -224,4 +224,16 @@ class FeedController extends Controller
         }
         return $this->redirect(['view', 'id' => $id]);
     }
+
+    public function actionClone($id)
+    {
+        $model = $this->findModel($id);
+        $model->id = null;
+        $model->incident_id = null;
+        $model->isNewRecord = true;
+        return $this->render('create', [
+            'model' => $model,
+            'hide' => false
+        ]);
+    }
 }

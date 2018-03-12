@@ -12,6 +12,7 @@ use kartik\datetime\DateTimePicker;
 <div class="feed-form">
 
     <?php $form = ActiveForm::begin([
+        'action' =>['feed/create'],
         'id' => 'feed-form',
         'options' => [
             'style' => $hide ? 'display: none;' : '',
