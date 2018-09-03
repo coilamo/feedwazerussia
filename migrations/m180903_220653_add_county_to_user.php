@@ -12,7 +12,7 @@ class m180903_220653_add_county_to_user extends Migration
      */
     public function safeUp()
     {
-        $table = \Yii::app()->db->schema->getTable('user');
+        $table = $this->db->getTableSchema('user', true);
         if(!isset($table->columns['country'])) {
             $this->addColumn('user', 'country', $this->integer());
             $this->update('user', ['country' => 1], ['country' => null]);
