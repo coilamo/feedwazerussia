@@ -53,6 +53,7 @@ class SignupForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateAccessToken();
+        $user->country = 1; // Set default country to Russia
         return $user->save() ? $user : null;
     }
  

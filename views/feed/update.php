@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = Yii::t('app/feed', 'Update');
 
     <?= $this->render('_form', [
         'model' => $model,
+        'allowedTypes' => $allowedTypes,
     ]) ?>
 
 </div>

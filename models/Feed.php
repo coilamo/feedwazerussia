@@ -62,6 +62,7 @@ class Feed extends \yii\db\ActiveRecord
             [['description', 'location', 'polyline', 'street', 'reference', 'source', 'location_description', 'name', 'parent_event', 'schedule', 'short_description', 'subtype', 'url', 'comment'], 'string', 'max' => 256],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
             ['polyline', 'validatePolyline'],
+            ['type', 'validateType'],
         ];
     }
 
@@ -137,6 +138,15 @@ class Feed extends \yii\db\ActiveRecord
                         Yii::t('app/feed',
                         'Distance between points should be more than 40 meters (Currently {distance, plural, =0{are # meters} =1{is 1 meter} other{are # meters}}!).',
                                 ['distance' => $distance]));
+            }
+        }
+    }
+
+    public function validateType($attribute, $params, $validator)
+    {
+        if ($this->author->country == 2) { // Belarus
+            if ($this->$attribute == 'CHIT_CHAT') {
+                $this->addError($attribute, Yii::t('app/feed', 'Chat category is disabled for your country.'));
             }
         }
     }

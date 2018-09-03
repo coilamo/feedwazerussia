@@ -53,15 +53,7 @@ use kartik\datetime\DateTimePicker;
                         'SOUTH_WEST' => Yii::t('app/feed', 'To South-West'),
                         'ONE_DIRECTION' => Yii::t('app/feed', 'One direction')],
                     ['prompt' => Yii::t('app/feed', 'Select direction'), 'maxlength' => true, 'minlenght' => true]) ?>
-            <?= $form->field($model, 'type')->dropDownList([
-                'CHIT_CHAT' => Yii::t('app/feed', 'Chat'),
-                'POLICE' => Yii::t('app/feed', 'Police'),
-                'JAM' => Yii::t('app/feed', 'Traffic'),
-                'ACCIDENT' => Yii::t('app/feed', 'Crash'),
-                'CONSTRUCTION' => Yii::t('app/feed', 'Road works'),
-                'HAZARD' => Yii::t('app/feed', 'Hazard'),
-                'ROAD_CLOSED' => Yii::t('app/feed', 'Closure'),
-                ], ['prompt' => Yii::t('app/feed', 'Select event type'), 'maxlength' => true, 'minlenght' => true]) ?>
+            <?= $form->field($model, 'type')->dropDownList($allowedTypes, ['prompt' => Yii::t('app/feed', 'Select event type'), 'maxlength' => true, 'minlenght' => true]) ?>
             <?= $form->field($model, 'subtype')->dropDownList([], ['style' => 'display: none']) ?>
         </span>
     </div>
