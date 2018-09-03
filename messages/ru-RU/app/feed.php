@@ -26,6 +26,7 @@ return [
     'Car stopped on road' => 'Машина остановилась на дороге',
     'Car stopped on shoulder' => 'Машина остановилась на обочине',
     'Chat' => 'Чат',
+    'Chat category is disabled for your country.' => 'Категория "Чат" отключена в Вашей стране',
     'Click out to unselect features' => 'Кликните, чтобы отменить выбор функции',
     'Closure' => 'Перекрытие',
     'Comment' => 'Комментарий',
@@ -117,4 +118,5 @@ return [
     'Updated At' => 'Обновлено в',
     'Url' => 'Url',
     'Visible police' => 'Видимая полиция',
+    'You\'re not allowed to delete this feed!' => 'Вы не можете удалить данный отчет!',
 ];

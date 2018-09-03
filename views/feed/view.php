@@ -29,7 +29,9 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/
 <div class="feed-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    
+    <?php if($deleteNotAllowed) { ?>
+        <div class="alert alert-danger"><?=Yii::t('app/feed', 'You\'re not allowed to delete this feed!') ?></div>
+    <?php } ?>
     <div id="map" class="smallmap"></div>
 
     <p>

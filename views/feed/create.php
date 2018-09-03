@@ -98,7 +98,8 @@ ul {
     
     <?= $this->render('_form', [
         'model' => $model,
-        'hide' => $hide
+        'hide' => $hide,
+        'allowedTypes' => $allowedTypes,
     ]) ?>
     
     <script>

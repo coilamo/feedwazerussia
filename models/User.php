@@ -17,6 +17,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $auth_key
  * @property string $access_token
  * @property integer $enabled
+ * @property integer $country
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -42,7 +43,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['login', 'password', 'email', 'auth_key', 'access_token'], 'required'],
-            [['enabled'], 'integer'],
+            [['enabled', 'country'], 'integer'],
             [['login', 'auth_key'], 'string', 'max' => 32],
             [['password'], 'string', 'max' => 48],
             [['email', 'access_token'], 'string', 'max' => 255],
@@ -62,6 +63,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'auth_key' => Yii::t('app/user', 'Auth Key'),
             'access_token' => Yii::t('app/user', 'Access Token'),
             'enabled' => Yii::t('app/user', 'Enabled'),
+            'enabled' => Yii::t('app/user', 'Country'),
         ];
     }
     

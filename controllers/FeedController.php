@@ -75,6 +75,7 @@ class FeedController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'deleteNotAllowed' => false,
         ]);
     }
 
@@ -104,7 +105,8 @@ class FeedController extends Controller
                 // Invalid polyline!
                 return $this->render('create', [
                     'model' => $model,
-                    'hide' => false
+                    'hide' => false,
+                    'allowedTypes' => $this->getAllowedTypes(),
                 ]);
             }
 
@@ -138,13 +140,15 @@ class FeedController extends Controller
             {
                 return $this->render('create', [
                     'model' => $model,
-                    'hide' => false
+                    'hide' => false,
+                    'allowedTypes' => $this->getAllowedTypes(),
                 ]);
             }
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'hide' => true
+                'hide' => true,
+                'allowedTypes' => $this->getAllowedTypes(),
             ]);
         }
     }
@@ -176,9 +180,17 @@ class FeedController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $feed = $this->findModel($id);
+        if ($feed->author_id == \Yii::$app->user->getId()
+            || (($feed->author->country == 2) && (\Yii::$app->user->identity->country == 2))) { // Author should be the same or from Belarus
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        }
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+            'deleteNotAllowed' => true,
+        ]);
     }
 
     /**
@@ -240,7 +252,24 @@ class FeedController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'hide' => false
+            'hide' => false,
+            'allowedTypes' => $this->getAllowedTypes(),
         ]);
+    }
+
+    private function getAllowedTypes() {
+        $allowedTypes = array();
+
+        if(\Yii::$app->user->identity->country != 2) {
+            $allowedTypes['CHIT_CHAT'] = Yii::t('app/feed', 'Chat');
+        }
+        $allowedTypes['POLICE'] = Yii::t('app/feed', 'Police');
+        $allowedTypes['JAM'] = Yii::t('app/feed', 'Traffic');
+        $allowedTypes['ACCIDENT'] = Yii::t('app/feed', 'Crash');
+        $allowedTypes['CONSTRUCTION'] = Yii::t('app/feed', 'Road works');
+        $allowedTypes['HAZARD'] = Yii::t('app/feed', 'Hazard');
+        $allowedTypes['ROAD_CLOSED'] = Yii::t('app/feed', 'Closure');
+
+        return $allowedTypes;
     }
 }
