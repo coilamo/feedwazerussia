@@ -104,13 +104,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-<?php Pjax::end(); ?>
+    <?php Pjax::end(); ?>
+    <div class="input-group">
+        <span class="input-group-btn">
+            <?= Html::submitButton(Yii::t('app/feed', 'Execute'), ['class' => 'btn btn-warning',]);?>
+        </span>
+        <?=Html::dropDownList('action','',
+            [
+                '' => Yii::t('app/feed', 'Actions with selected'),
+                'r' => Yii::t('app/feed', 'Remove')
+            ],
+            ['class' => 'form-control'])?>
 
-    <?=Html::dropDownList('action','',
-        [
-            '' => Yii::t('app/feed', 'Actions with selected'),
-            'r' => Yii::t('app/feed', 'Remove')
-        ])?>
-    <?= Html::submitButton(Yii::t('app/feed', 'Execute'), ['class' => 'btn btn-warning',]);?>
+    </div>
     <?= Html::endForm();?>
 </div>
