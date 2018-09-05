@@ -36,14 +36,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'incident_id',
+            //'incident_id',
+            [
+                'attribute' => 'authorFilterInput',
+                'value' => 'author.login'
+            ],
             'description',
             'created_at',
             // 'updated_at',
             // 'incident',
             // 'incidents',
             // 'location',
-            'polyline',
+            // 'polyline',
             'starttime',
             'endtime',
             'street',

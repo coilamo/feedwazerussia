@@ -94,6 +94,10 @@ $this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/
             'type',
             'direction',
             'author_id',
+            [
+                'attribute' => 'authorFilterInput',
+                'value' => $model->author->login,
+            ],
             'reference',
             'source',
             'location_description',

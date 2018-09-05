@@ -12,6 +12,7 @@ use app\models\Feed;
  */
 class FeedSearch extends Feed
 {
+    public $authorFilterInput;
     /**
      * @inheritdoc
      */
@@ -19,7 +20,9 @@ class FeedSearch extends Feed
     {
         return [
             [['id', 'created_at', 'updated_at', 'author_id', 'active', 'mail_send'], 'integer'],
-            [['incident_id', 'description', 'incident', 'incidents', 'location', 'polyline', 'starttime', 'endtime', 'street', 'type', 'direction', 'reference', 'source', 'location_description', 'name', 'parent_event', 'schedule', 'short_description', 'subtype', 'url', 'comment'], 'safe'],
+            [['incident_id', 'description', 'incident', 'incidents', 'location', 'polyline', 'starttime', 'endtime',
+                'street', 'type', 'direction', 'reference', 'source', 'location_description', 'name', 'parent_event',
+                'schedule', 'short_description', 'subtype', 'url', 'comment', 'authorFilterInput'], 'safe'],
         ];
     }
 
@@ -49,6 +52,11 @@ class FeedSearch extends Feed
             'query' => $query,
         ]);
 
+        $dataProvider->sort->attributes['authorFilterInput'] = [
+            'asc' => ['user.login' => SORT_ASC],
+            'desc' => ['user.login' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -58,19 +66,15 @@ class FeedSearch extends Feed
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'starttime' => $this->starttime,
-            'endtime' => $this->endtime,
-            'author_id' => $this->author_id,
-            'active' => $this->active,
-            'mail_send' => $this->mail_send,
-            'author_id' => \Yii::$app->user->getId(),
-        ]);
 
-        $query->andFilterWhere(['like', 'incident_id', $this->incident_id])
+        $query->joinWith(['author']);//leftJoin('user', '`user`.`id` = `feed`.`author_id`');
+        if (!\Yii::$app->user->isGuest && \Yii::$app->user->identity->country == 2) {
+            $query->andFilterWhere(['user.country' => 2]);
+        } else {
+            $query->andFilterWhere(['author_id' => \Yii::$app->user->getId()]);
+        }
+
+        $query->andFilterWhere(['like', 'feed.id', $this->id])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'incident', $this->incident])
             ->andFilterWhere(['like', 'incidents', $this->incidents])
@@ -88,7 +92,8 @@ class FeedSearch extends Feed
             ->andFilterWhere(['like', 'short_description', $this->short_description])
             ->andFilterWhere(['like', 'subtype', $this->subtype])
             ->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'comment', $this->comment]);
+            ->andFilterWhere(['like', 'comment', $this->comment])
+            ->andFilterWhere(['like', 'user.login', $this->authorFilterInput]);
 
         return $dataProvider;
     }
