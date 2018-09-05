@@ -57,12 +57,16 @@ class FeedController extends Controller
      */
     public function actionIndex()
     {
+        $bulkResult = $this->processBulk();
         $searchModel = new FeedSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'isBulk' => $bulkResult['isBulk'],
+            'bulkAction' => $bulkResult['bulkAction'],
+            'bulkResult' => $bulkResult['bulkResult'],
         ]);
     }
 
@@ -180,11 +184,7 @@ class FeedController extends Controller
      */
     public function actionDelete($id)
     {
-        $feed = $this->findModel($id);
-        if ($feed->author_id == \Yii::$app->user->getId()
-            || (($feed->author->country == 2) && (\Yii::$app->user->identity->country == 2))) { // Author should be the same or from Belarus
-            $this->findModel($id)->delete();
-
+        if ($this->deleteFeedById($id)) {
             return $this->redirect(['index']);
         }
         return $this->render('view', [
@@ -257,6 +257,32 @@ class FeedController extends Controller
         ]);
     }
 
+    private function processBulk(){
+        $action=Yii::$app->request->post('action');
+
+        if(empty($action)) {
+            return [
+                'isBulk' => false,
+                'bulkAction' => $action,
+                'bulkResult' => false,
+            ];
+        }
+        $success = true;
+        $selection=(array)Yii::$app->request->post('selection');//typecasting
+
+        foreach($selection as $id){
+            if ($action == 'r') {
+                $success &= $this->deleteFeedById($id, true);
+            }
+        }
+
+        return [
+            'isBulk' => true,
+            'bulkAction' => $action,
+            'bulkResult' => $success,
+        ];
+    }
+
     private function getAllowedTypes() {
         $allowedTypes = array();
 
@@ -271,5 +297,24 @@ class FeedController extends Controller
         $allowedTypes['ROAD_CLOSED'] = Yii::t('app/feed', 'Closure');
 
         return $allowedTypes;
+    }
+
+    private function deleteFeedById($id, $bulk = false) {
+        try {
+            $feed = $this->findModel($id);
+            if ($feed->author_id == \Yii::$app->user->getId()
+                || (($feed->author->country == 2) && (\Yii::$app->user->identity->country == 2))) { // Author should be the same or from Belarus
+                $this->findModel($id)->delete();
+                return true;
+            }
+            return false;
+        } catch (NotFoundHttpException $ex) {
+            if (!$bulk) {
+                throw $ex;
+            } else {
+                return false;
+            }
+        }
+
     }
 }
