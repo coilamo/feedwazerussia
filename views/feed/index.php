@@ -15,10 +15,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <?php if($isBulk) {
+        if ($bulkAction == 'r') {
+            if ($bulkResult) {
+                ?><div class="alert alert-success"><?=Yii::t('app/feed', 'Selected reports has been deleted') ?></div> <?php
+            } else {
+                ?><div class="alert alert-danger"><?=Yii::t('app/feed', 'Some of selected reports could not be deleted!') ?></div> <?php
+            }
+        }
+    }?>
     <p>
         <?= Html::a(Yii::t('app/feed', 'Create Report'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
+    <?=Html::beginForm(['feed/index'],'post');?>
+    <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'layout' => "{summary}\n{pager}\n{items}\n{pager}",
@@ -33,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         },
         'columns' => [
+            ['class' => 'yii\grid\CheckboxColumn'],
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
@@ -93,4 +104,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-<?php Pjax::end(); ?></div>
+<?php Pjax::end(); ?>
+
+    <?=Html::dropDownList('action','',
+        [
+            '' => Yii::t('app/feed', 'Actions with selected'),
+            'r' => Yii::t('app/feed', 'Remove')
+        ])?>
+    <?= Html::submitButton(Yii::t('app/feed', 'Execute'), ['class' => 'btn btn-warning',]);?>
+    <?= Html::endForm();?>
+</div>
