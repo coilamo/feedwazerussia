@@ -21,6 +21,7 @@ return [
     'Active' => 'Активен',
     'Animals on shoulder' => 'Животные на обочине',
     'Are you sure you want to delete this item?' => 'Вы уверены что хотите удалить эту запись?',
+    'Author' => 'Автор',
     'Author ID' => 'ID автора',
     'Both directions' => 'В обе стороны',
     'Car stopped on road' => 'Машина остановилась на дороге',

@@ -99,6 +99,7 @@ class Feed extends \yii\db\ActiveRecord
             'active' => Yii::t('app/feed', 'Active'),
             'mail_send' => Yii::t('app/feed', 'Mail Send'),
             'comment' => Yii::t('app/feed', 'Comment'),
+            'authorFilterInput' => Yii::t('app/feed', 'Author'),
         ];
     }
     

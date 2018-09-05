@@ -17,7 +17,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'incident_id') ?>
+    <?= $form->field($model, 'authorFilterInput') ?>
+    <?php // echo $form->field($model, 'incident_id') ?>
 
     <?= $form->field($model, 'description') ?>
 
@@ -31,7 +32,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'location') ?>
 
-    <?= $form->field($model, 'polyline') ?>
+    <?php // $form->field($model, 'polyline') ?>
 
     <?= $form->field($model, 'starttime') ?>
 
