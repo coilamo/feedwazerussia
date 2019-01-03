@@ -286,9 +286,9 @@ class FeedController extends Controller
     private function getAllowedTypes() {
         $allowedTypes = array();
 
-        if(\Yii::$app->user->identity->country != 2) {
+        /*if(\Yii::$app->user->identity->country != 2) {*/
             $allowedTypes['CHIT_CHAT'] = Yii::t('app/feed', 'Chat');
-        }
+        /* } */
         $allowedTypes['POLICE'] = Yii::t('app/feed', 'Police');
         $allowedTypes['JAM'] = Yii::t('app/feed', 'Traffic');
         $allowedTypes['ACCIDENT'] = Yii::t('app/feed', 'Crash');
