@@ -145,11 +145,11 @@ class Feed extends \yii\db\ActiveRecord
 
     public function validateType($attribute, $params, $validator)
     {
-        if ($this->author->country == 2) { // Belarus
+        /*if ($this->author->country == 2) { // Belarus
             if ($this->$attribute == 'CHIT_CHAT') {
                 $this->addError($attribute, Yii::t('app/feed', 'Chat category is disabled for your country.'));
             }
-        }
+        }*/
     }
     
     private static function haversineGreatCircleDistance(
